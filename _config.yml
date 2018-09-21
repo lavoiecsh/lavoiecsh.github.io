@@ -4,7 +4,7 @@ description: >
   A blog about programming by
   Un blog à propos de la programmation par
   Sébastien Lavoie-Courchesne
-baseurl: /
+baseurl: ''
 url: http://lavoiecsh.github.io/
 twitter_username: 
 github_username:  lavoiecsh
