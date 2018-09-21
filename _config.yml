@@ -1,14 +1,13 @@
-# Site settings
 title: My blog
 email: lavoiecsh@gmail.com
 description: >
-  A simple programming blog by/Un blog de programmation simple par Sébastien Lavoie-Courchesne.
+  A blog about programming by
+  Un blog à propos de la programmation
+  Sébastien Lavoie-Courchesne
 baseurl: ""
 url: "http://lavoiecsh.github.io/" # the base hostname & protocol for your site
 twitter_username: 
 github_username:  lavoiecsh
-
-# Build settings
+theme: jekyll-theme-time-machine
 markdown: kramdown
 
-theme: jekyll-theme-time-machine
