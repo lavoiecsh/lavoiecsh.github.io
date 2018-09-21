@@ -2,10 +2,10 @@ title: My blog
 email: lavoiecsh@gmail.com
 description: >
   A blog about programming by
-  Un blog à propos de la programmation
+  Un blog à propos de la programmation par
   Sébastien Lavoie-Courchesne
 baseurl: ""
-url: "http://lavoiecsh.github.io/" # the base hostname & protocol for your site
+url: "http://lavoiecsh.github.io/"
 twitter_username: 
 github_username:  lavoiecsh
 theme: jekyll-theme-time-machine
