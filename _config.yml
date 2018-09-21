@@ -8,6 +8,6 @@ baseurl: ""
 url: "http://lavoiecsh.github.io/" # the base hostname & protocol for your site
 twitter_username: 
 github_username:  lavoiecsh
-theme: jekyll-theme-slate
+theme: jekyll-theme-time-machine
 markdown: kramdown
 
