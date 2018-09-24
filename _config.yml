@@ -7,6 +7,6 @@ baseurl: ''
 url: http://lavoiecsh.github.io/
 twitter_username: 
 github_username:  lavoiecsh
-theme: jekyll-theme-time-machine
+theme: jekyll-theme-slate
 markdown: kramdown
 
