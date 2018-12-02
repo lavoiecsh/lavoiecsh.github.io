@@ -14,16 +14,16 @@ namespace advent.solvers
             this.fileReader = fileReader;
         }
 
-        public int Solve1(IEnumerable<string> args)
+        public string Solve1(IEnumerable<string> args)
         {
             var changes = fileReader.ReadInts(args.First());
-            return changes.Sum();
+            return changes.Sum().ToString();
         }
 
-        public int Solve2(IEnumerable<string> args)
+        public string Solve2(IEnumerable<string> args)
         {
             var changes = fileReader.ReadInts(args.First());
-            return FirstDuplicateFrequency(changes.ToList());
+            return FirstDuplicateFrequency(changes.ToList()).ToString();
         }
         
         private static int FirstDuplicateFrequency(IList<int> changes)

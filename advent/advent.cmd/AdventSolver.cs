@@ -14,7 +14,7 @@ namespace advent.cmd
             var argsTail = args.Skip(2);
             var solver = GetSolver(day);
             var solution = problem == 1 ? solver.Solve1(argsTail) : solver.Solve2(argsTail);
-            Console.WriteLine($"Solution to problem {problem}: {solution}");
+            Console.WriteLine($"Solution to problem {day}-{problem}: {solution}");
         }
 
         private static ISolver GetSolver(int problem)
@@ -23,6 +23,8 @@ namespace advent.cmd
             {
                 case 1:
                     return new ChronalCalibrationSolver(new FileReader());
+                case 2:
+                    return new InventoryManagementSystemSolver(new FileReader());
                 default:
                     return null;
             }
