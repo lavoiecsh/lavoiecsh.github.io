@@ -1,0 +1,18 @@
+---
+layout: post
+title: "Jour 1: Chronal Calibration"
+lang: fr
+ref: chronal_calibration
+date: 2018-12-01 9:00:00 -0400
+categories: [advent]
+tags: [advent]
+---
+Le premier jour du défi du calendrier de l'avent en code débute assez lentement. Il ne suffit que de faire une somme de tous les nombres. J'ai accompli ceci en replaçant les fins de lines par un espace et en entourant le tout d'une expression de sommation en LISP ```(+ ...)```.
+
+La seconde partie requiert plus de travail par contre, donc j'ai écrit un program pour trouver la solution. Par chance, plusieurs exemples nous sont donnés que nous pouvons utiliser comme des cas de tests unitaires.
+
+J'ai fini par créer un programme en C# pour faire ceci en utilisant une boucle simple. J'ai aussi profité de cette occasion pour mettre en place plusieurs classes qui seront probablement utiles pour les prochains problèmes, comme une interface de ligne de commande simple qui accède à tous les solutionneurs, ainsi qu'un lecteur de fichier pour retourner les entiers du fichier dans une liste.
+
+J'ai aussi ajouté la première partie du problème dans la solution.
+
+Tout le code est disponible dans mon github: [code des solutions de l'avent](https://github.com/lavoiecsh/lavoiecsh.github.io/tree/master/advent).
