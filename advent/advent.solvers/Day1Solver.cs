@@ -5,11 +5,13 @@ using advent.util;
 
 namespace advent.solvers
 {
-    public class ChronalCalibrationSolver : ISolver
+    public class Day1Solver : ISolver
     {
+        public string ProblemName => "ChronalCalibration";
+        
         private readonly IFileReader fileReader;
 
-        public ChronalCalibrationSolver(IFileReader fileReader)
+        public Day1Solver(IFileReader fileReader)
         {
             this.fileReader = fileReader;
         }

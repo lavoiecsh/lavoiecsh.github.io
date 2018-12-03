@@ -4,16 +4,16 @@ using Xunit;
 
 namespace advent.solvers.test
 {
-    public class InventoryManagementSystemSolverTest
+    public class Day2SolverTest
     {
         private readonly ISolver solver;
 
         private readonly Mock<IFileReader> fileReader;
 
-        public InventoryManagementSystemSolverTest()
+        public Day2SolverTest()
         {
             fileReader = new Mock<IFileReader>();
-            solver = new InventoryManagementSystemSolver(fileReader.Object);
+            solver = new Day2Solver(fileReader.Object);
         }
 
         [Theory]

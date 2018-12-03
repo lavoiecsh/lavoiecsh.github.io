@@ -1,15 +1,16 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using advent.util;
 
 namespace advent.solvers
 {
-    public class InventoryManagementSystemSolver : ISolver
+    public class Day2Solver : ISolver
     {
+        public string ProblemName => "Inventory Management System";
+        
         private readonly IFileReader fileReader;
 
-        public InventoryManagementSystemSolver(IFileReader fileReader)
+        public Day2Solver(IFileReader fileReader)
         {
             this.fileReader = fileReader;
         }

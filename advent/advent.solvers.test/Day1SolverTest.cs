@@ -4,16 +4,16 @@ using Xunit;
 
 namespace advent.solvers.test
 {
-    public class ChronalCalibrationSolverTest
+    public class Day1SolverTest
     {
         private readonly ISolver solver;
 
         private readonly Mock<IFileReader> fileReader;
 
-        public ChronalCalibrationSolverTest()
+        public Day1SolverTest()
         {
             fileReader = new Mock<IFileReader>();
-            solver = new ChronalCalibrationSolver(fileReader.Object);
+            solver = new Day1Solver(fileReader.Object);
         }
 
         [Theory]
