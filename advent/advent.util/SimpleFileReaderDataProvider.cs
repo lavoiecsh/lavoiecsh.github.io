@@ -5,11 +5,11 @@ using advent.solvers;
 
 namespace advent.util
 {
-    public class FileReaderDataProvider : DataProvider<string>, DataProvider<int>
+    public class SimpleFileReaderDataProvider : DataProvider<string>, DataProvider<int>
     {
         private readonly string filename;
 
-        public FileReaderDataProvider(string filename)
+        public SimpleFileReaderDataProvider(string filename)
         {
             this.filename = filename;
         }

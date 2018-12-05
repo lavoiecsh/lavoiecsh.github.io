@@ -10,7 +10,7 @@ namespace advent.util.test
         {
             const string filename = "int_list.txt";
             var expected = new[] {1, 2, 3, 4, 5};
-            var dataProvider = new FileReaderDataProvider(filename) as DataProvider<int>;
+            var dataProvider = new SimpleFileReaderDataProvider(filename) as DataProvider<int>;
             Assert.Equal(expected, dataProvider.GetData());
         }
 
@@ -19,7 +19,7 @@ namespace advent.util.test
         {
             const string filename = "string_list.txt";
             var expected = new[] {"ab", "cde", "fghi"};
-            var dataProvider = new FileReaderDataProvider(filename) as DataProvider<string>;
+            var dataProvider = new SimpleFileReaderDataProvider(filename) as DataProvider<string>;
             Assert.Equal(expected, dataProvider.GetData());
         }
     }
