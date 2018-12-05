@@ -4,8 +4,4 @@
         <TargetFramework>netcoreapp2.1</TargetFramework>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\advent.util\advent.util.csproj" />
-    </ItemGroup>
-
 </Project>

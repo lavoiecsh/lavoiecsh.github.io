@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using advent.solvers;
 using advent.util;
@@ -11,22 +12,23 @@ namespace advent.cmd
         {
             var day = int.Parse(args[0]);
             var problem = int.Parse(args[1]);
-            var argsTail = args.Skip(2);
-            var solver = GetSolver(day);
-            var solution = problem == 1 ? solver.Solve1(argsTail) : solver.Solve2(argsTail);
+            var solver = GetSolver(day, args.Skip(2));
+            var solution = problem == 1 ? solver.SolveFirstPart() : solver.SolveSecondPart();
             Console.WriteLine($"Solution to problem {day}-{problem} ({solver.ProblemName}): {solution}");
         }
 
-        private static ISolver GetSolver(int problem)
+        private static Solver GetSolver(int problem, IEnumerable<string> args)
         {
             switch (problem)
             {
                 case 1:
-                    return new Day1Solver(new FileReader());
+                    return new Day01Solver(new FileReaderDataProvider(args.First()));
                 case 2:
-                    return new Day2Solver(new FileReader());
+                    return new Day02Solver(new FileReaderDataProvider(args.First()));
                 case 3:
-                    return new Day3Solver(new FileReader());
+                    return new Day03Solver(new ClaimFileReaderDataProvider(args.First()));
+                case 4:
+                    return new Day04Solver(new GuardFileReaderDataProvider(args.First()));
                 default:
                     return null;
             }

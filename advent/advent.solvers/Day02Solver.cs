@@ -1,23 +1,21 @@
-using System.Collections.Generic;
 using System.Linq;
-using advent.util;
 
 namespace advent.solvers
 {
-    public class Day2Solver : ISolver
+    public class Day02Solver : Solver
     {
         public string ProblemName => "Inventory Management System";
         
-        private readonly IFileReader fileReader;
+        private readonly DataProvider<string> dataProvider;
 
-        public Day2Solver(IFileReader fileReader)
+        public Day02Solver(DataProvider<string> dataProvider)
         {
-            this.fileReader = fileReader;
+            this.dataProvider = dataProvider;
         }
 
-        public string Solve1(IEnumerable<string> args)
+        public string SolveFirstPart()
         {
-            var ids = fileReader.ReadStrings(args.First());
+            var ids = dataProvider.GetData();
             var counts = ids.Select(s => s.GroupBy(c => c).Select(g => g.Count()))
                 .Select(cs =>
                 {
@@ -28,9 +26,9 @@ namespace advent.solvers
             return (counts.Count(c => c[0]) * counts.Count(c => c[1])).ToString();
         }
 
-        public string Solve2(IEnumerable<string> args)
+        public string SolveSecondPart()
         {
-            var ids = fileReader.ReadStrings(args.First()).ToList();
+            var ids = dataProvider.GetData().ToList();
             foreach (var id1 in ids)
             {
                 foreach (var id2 in ids)

@@ -1,30 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using advent.util;
 
 namespace advent.solvers
 {
-    public class Day1Solver : ISolver
+    public class Day01Solver : Solver
     {
         public string ProblemName => "ChronalCalibration";
         
-        private readonly IFileReader fileReader;
+        private readonly DataProvider<int> dataProvider;
 
-        public Day1Solver(IFileReader fileReader)
+        public Day01Solver(DataProvider<int> dataProvider)
         {
-            this.fileReader = fileReader;
+            this.dataProvider = dataProvider;
         }
 
-        public string Solve1(IEnumerable<string> args)
+        public string SolveFirstPart()
         {
-            var changes = fileReader.ReadInts(args.First());
+            var changes = dataProvider.GetData();
             return changes.Sum().ToString();
         }
 
-        public string Solve2(IEnumerable<string> args)
+        public string SolveSecondPart()
         {
-            var changes = fileReader.ReadInts(args.First());
+            var changes = dataProvider.GetData();
             return FirstDuplicateFrequency(changes.ToList()).ToString();
         }
         
