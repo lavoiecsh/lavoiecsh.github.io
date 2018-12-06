@@ -13,14 +13,14 @@ namespace advent.cmd
         {
             var day = int.Parse(args[0]);
             var problem = int.Parse(args[1]);
-            var solver = GetSolver(day, args.Skip(2));
+            var solver = GetSolver(day, args.Skip(2).ToList());
             var watch = Stopwatch.StartNew();
             var solution = problem == 1 ? solver.SolveFirstPart() : solver.SolveSecondPart();
             watch.Stop();
             Console.WriteLine($"Solution to problem {day}-{problem} ({solver.ProblemName}): {solution} (found in {watch.ElapsedMilliseconds}ms)");
         }
 
-        private static Solver GetSolver(int problem, IEnumerable<string> args)
+        private static Solver GetSolver(int problem, IList<string> args)
         {
             switch (problem)
             {
@@ -34,6 +34,8 @@ namespace advent.cmd
                     return new Day04Solver(new GuardFileReaderDataProvider(args.First()));
                 case 5:
                     return new Day05Solver(new SimpleFileReaderDataProvider(args.First()));
+                case 6:
+                    return new Day06Solver(new LocationFileReaderDataProvider(args.First()), int.Parse(args[1]));
                 default:
                     return null;
             }
