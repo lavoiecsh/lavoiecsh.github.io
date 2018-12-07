@@ -17,19 +17,22 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="int_list.txt">
+      <None Update="data\step_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="string_list.txt">
+      <None Update="data\string_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="claim_list.txt">
+      <None Update="data\int_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="guard_list.txt">
+      <None Update="data\guard_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="coordinate_list.txt">
+      <None Update="data\coordinate_list.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="data\claim_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>

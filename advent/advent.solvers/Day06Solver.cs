@@ -11,7 +11,7 @@ namespace advent.solvers
         private readonly DataProvider<Location> dataProvider;
         private readonly int maxDistanceSumAllowed;
 
-        public Day06Solver(DataProvider<Location> dataProvider, int maxDistanceSumAllowed)
+        public Day06Solver(DataProvider<Location> dataProvider, int maxDistanceSumAllowed = 10000)
         {
             this.dataProvider = dataProvider;
             this.maxDistanceSumAllowed = maxDistanceSumAllowed;

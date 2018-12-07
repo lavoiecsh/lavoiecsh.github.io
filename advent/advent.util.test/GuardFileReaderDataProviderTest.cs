@@ -10,7 +10,7 @@ namespace advent.util.test
         [Fact]
         public void ReturnsGuardsFromFile()
         {
-            const string filename = "guard_list.txt";
+            const string filename = "data\\guard_list.txt";
             var guard10 = new Guard(10);
             guard10.SleepIntervals.Add(new Guard.SleepInterval(05, 25));
             guard10.SleepIntervals.Add(new Guard.SleepInterval(30, 55));

@@ -20,7 +20,7 @@ namespace advent.cmd
             Console.WriteLine($"Solution to problem {day}-{problem} ({solver.ProblemName}): {solution} (found in {watch.ElapsedMilliseconds}ms)");
         }
 
-        private static Solver GetSolver(int problem, IList<string> args)
+        private static Solver GetSolver(int problem, IEnumerable<string> args)
         {
             switch (problem)
             {
@@ -35,7 +35,9 @@ namespace advent.cmd
                 case 5:
                     return new Day05Solver(new SimpleFileReaderDataProvider(args.First()));
                 case 6:
-                    return new Day06Solver(new LocationFileReaderDataProvider(args.First()), int.Parse(args[1]));
+                    return new Day06Solver(new LocationFileReaderDataProvider(args.First()));
+                case 7:
+                    return new Day07Solver(new StepFileReaderDataProvider(args.First()));
                 default:
                     return null;
             }

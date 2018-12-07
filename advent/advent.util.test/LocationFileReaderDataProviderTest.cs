@@ -9,7 +9,7 @@ namespace advent.util.test
         [Fact]
         public void ReturnsCoordinatesFromFile()
         {
-            const string filename = "coordinate_list.txt";
+            const string filename = "data\\coordinate_list.txt";
             var expected = new[]
             {
                 new Day06Solver.Location(1, 1),

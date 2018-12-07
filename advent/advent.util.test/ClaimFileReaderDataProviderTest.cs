@@ -9,7 +9,7 @@ namespace advent.util.test
         [Fact]
         public void ReturnsClaimsFromFile()
         {
-            const string filename = "claim_list.txt";
+            const string filename = "data\\claim_list.txt";
             var expected = new[]
             {
                 new Claim(1, 1, 3, 4, 4),
