@@ -40,6 +40,8 @@ namespace advent.cmd
                     return new Day07Solver(new StepFileReaderDataProvider(args.First()));
                 case 8:
                     return new Day08Solver(new NodeFileReaderDataProvider(args.First()));
+                case 9:
+                    return new Day09Solver(new MarbleGameFileReaderDataProvider(args.First()));
                 default:
                     return null;
             }
