@@ -35,16 +35,18 @@ namespace advent.solvers
             public int LastMarble;
 
             private readonly long[] scores;
-            private readonly List<int> marbles;
-            private int currentMarbleIndex;
             private int currentPlayer;
+
+            private readonly LinkedList<int> marbles;
+            private LinkedListNode<int> currentMarble;
 
             public MarbleGame(int playerCount, int lastMarble)
             {
                 PlayerCount = playerCount;
                 LastMarble = lastMarble;
                 scores = new long[playerCount];
-                marbles = new List<int>(lastMarble) {0};
+                marbles = new LinkedList<int>();
+                currentMarble = marbles.AddFirst(0);
             }
 
             public void PlayGame()
@@ -64,19 +66,28 @@ namespace advent.solvers
 
             private void RemoveMarble(int marble)
             {
-                currentMarbleIndex -= 7;
-                if (currentMarbleIndex < 0)
-                    currentMarbleIndex += marbles.Count;
-                scores[currentPlayer] += marble + marbles[currentMarbleIndex];
-                marbles.RemoveAt(currentMarbleIndex);
+                MoveBackward(7);
+                scores[currentPlayer] += marble + currentMarble.Value;
+                MoveForward(1);
+                marbles.Remove(currentMarble.Previous ?? marbles.Last);
             }
 
             private void PlaceMarble(int marble)
             {
-                currentMarbleIndex += 2;
-                if (currentMarbleIndex > marbles.Count)
-                    currentMarbleIndex -= marbles.Count;
-                marbles.Insert(currentMarbleIndex, marble);
+                MoveForward(1);
+                currentMarble = marbles.AddAfter(currentMarble, marble);
+            }
+
+            private void MoveForward(int count)
+            {
+                for (var i = 0; i < count; ++i)
+                    currentMarble = currentMarble.Next ?? marbles.First;
+            }
+
+            private void MoveBackward(int count)
+            {
+                for (var i = 0; i < count; ++i)
+                    currentMarble = currentMarble.Previous ?? marbles.Last;
             }
 
             public long HighestScore()

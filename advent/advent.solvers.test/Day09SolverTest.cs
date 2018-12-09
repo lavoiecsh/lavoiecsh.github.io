@@ -29,7 +29,5 @@ namespace advent.solvers.test
             
             Assert.Equal(expectedScore.ToString(), solver.SolveFirstPart());
         }
-        
-        
     }
 }
