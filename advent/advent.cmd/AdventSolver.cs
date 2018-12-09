@@ -38,6 +38,8 @@ namespace advent.cmd
                     return new Day06Solver(new LocationFileReaderDataProvider(args.First()));
                 case 7:
                     return new Day07Solver(new StepFileReaderDataProvider(args.First()));
+                case 8:
+                    return new Day08Solver(new NodeFileReaderDataProvider(args.First()));
                 default:
                     return null;
             }
