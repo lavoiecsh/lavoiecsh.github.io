@@ -17,7 +17,7 @@ namespace advent.cmd
             var watch = Stopwatch.StartNew();
             var solution = problem == 1 ? solver.SolveFirstPart() : solver.SolveSecondPart();
             watch.Stop();
-            Console.WriteLine($"Solution to problem {day}-{problem} ({solver.ProblemName}): {solution} (found in {watch.ElapsedMilliseconds}ms)");
+            Console.WriteLine($"Solution to problem {day}-{problem} ({solver.ProblemName}), found in {watch.ElapsedMilliseconds} ms: {Environment.NewLine}{solution}");
         }
 
         private static Solver GetSolver(int problem, IEnumerable<string> args)
@@ -42,6 +42,8 @@ namespace advent.cmd
                     return new Day08Solver(new NodeFileReaderDataProvider(args.First()));
                 case 9:
                     return new Day09Solver(new MarbleGameFileReaderDataProvider(args.First()));
+                case 10:
+                    return new Day10Solver(new LightFileReaderDataProvider(args.First()));
                 default:
                     return null;
             }
