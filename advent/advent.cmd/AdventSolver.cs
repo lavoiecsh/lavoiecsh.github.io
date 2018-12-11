@@ -44,6 +44,8 @@ namespace advent.cmd
                     return new Day09Solver(new MarbleGameFileReaderDataProvider(args.First()));
                 case 10:
                     return new Day10Solver(new LightFileReaderDataProvider(args.First()));
+                case 11:
+                    return new Day11Solver(int.Parse(args.First()));
                 default:
                     return null;
             }
