@@ -4,12 +4,12 @@ using Xunit;
 
 namespace advent.util.test
 {
-    public class LightFileReaderDataProviderTest
+    public class Day10LightFileReaderDataProviderTest
     {
         [Fact]
         public void ReturnsLightsFromFile()
         {
-            const string filename = "data\\light_list.txt";
+            const string filename = "data\\day10_light_list.txt";
             var expected = new List<Day10Solver.Light>
             {
                 new Day10Solver.Light(9, 1, 0, 2),
@@ -44,7 +44,7 @@ namespace advent.util.test
                 new Day10Solver.Light(14, 7, -2, 0),
                 new Day10Solver.Light(-3, 6, 2, -1)
             };
-            Assert.Equal(expected, new LightFileReaderDataProvider(filename).GetData(), new LightComparer());
+            Assert.Equal(expected, new Day10LightFileReaderDataProvider(filename).GetData(), new LightComparer());
         }
 
         private class LightComparer : IEqualityComparer<Day10Solver.Light>

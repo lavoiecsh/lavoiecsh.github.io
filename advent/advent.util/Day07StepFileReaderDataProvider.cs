@@ -6,21 +6,21 @@ using advent.solvers;
 
 namespace advent.util
 {
-    public class StepFileReaderDataProvider : DataProvider<Day07Solver.Step>
+    public class Day07StepFileReaderDataProvider : DataProvider<IList<Day07Solver.Step>>
     {
         private readonly string filename;
         private readonly int minimumTime;
 
         private readonly Regex requirementParsingRegex;
 
-        public StepFileReaderDataProvider(string filename, int minimumTime = 60)
+        public Day07StepFileReaderDataProvider(string filename, int minimumTime = 60)
         {
             this.filename = filename;
             this.minimumTime = minimumTime;
             requirementParsingRegex = new Regex("^Step (\\w) must be finished before step (\\w) can begin.$");
         }
 
-        public IEnumerable<Day07Solver.Step> GetData()
+        public IList<Day07Solver.Step> GetData()
         {
             var requirementMatches = File.ReadAllLines(filename)
                 .Select(line => requirementParsingRegex.Match(line))

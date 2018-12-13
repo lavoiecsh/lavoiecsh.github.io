@@ -6,22 +6,22 @@ using advent.solvers;
 
 namespace advent.util
 {
-    public class LocationFileReaderDataProvider : DataProvider<Day06Solver.Location>
+    public class Day06LocationFileReaderDataProvider : DataProvider<IList<Day06Solver.Location>>
     {
         private readonly string filename;
 
         private readonly Regex coordinateParsingRegex;
 
-        public LocationFileReaderDataProvider(string filename)
+        public Day06LocationFileReaderDataProvider(string filename)
         {
             this.filename = filename;
             
             coordinateParsingRegex = new Regex("^(\\d+), (\\d+)");
         }
 
-        public IEnumerable<Day06Solver.Location> GetData()
+        public IList<Day06Solver.Location> GetData()
         {
-            return File.ReadAllLines(filename).Select(MakeCoordinate);
+            return File.ReadAllLines(filename).Select(MakeCoordinate).ToList();
         }
 
         private Day06Solver.Location MakeCoordinate(string line)

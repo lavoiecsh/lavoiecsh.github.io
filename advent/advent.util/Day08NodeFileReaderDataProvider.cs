@@ -5,19 +5,19 @@ using advent.solvers;
 
 namespace advent.util
 {
-    public class NodeFileReaderDataProvider : DataProvider<Day08Solver.Node>
+    public class Day08NodeFileReaderDataProvider : DataProvider<Day08Solver.Node>
     {
         private readonly string filename;
 
-        public NodeFileReaderDataProvider(string filename)
+        public Day08NodeFileReaderDataProvider(string filename)
         {
             this.filename = filename;
         }
 
-        public IEnumerable<Day08Solver.Node> GetData()
+        public Day08Solver.Node GetData()
         {
             var license = File.ReadAllLines(filename).First().Split(' ').Select(int.Parse).ToList();
-            return new List<Day08Solver.Node> {MakeNode(license)};
+            return MakeNode(license);
         }
 
         private static Day08Solver.Node MakeNode(IList<int> license)

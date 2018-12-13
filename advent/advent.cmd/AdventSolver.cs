@@ -29,21 +29,21 @@ namespace advent.cmd
                 case 2:
                     return new Day02Solver(new SimpleFileReaderDataProvider(args.First()));
                 case 3:
-                    return new Day03Solver(new ClaimFileReaderDataProvider(args.First()));
+                    return new Day03Solver(new Day03ClaimFileReaderDataProvider(args.First()));
                 case 4:
-                    return new Day04Solver(new GuardFileReaderDataProvider(args.First()));
+                    return new Day04Solver(new Day04GuardFileReaderDataProvider(args.First()));
                 case 5:
                     return new Day05Solver(new SimpleFileReaderDataProvider(args.First()));
                 case 6:
-                    return new Day06Solver(new LocationFileReaderDataProvider(args.First()));
+                    return new Day06Solver(new Day06LocationFileReaderDataProvider(args.First()));
                 case 7:
-                    return new Day07Solver(new StepFileReaderDataProvider(args.First()));
+                    return new Day07Solver(new Day07StepFileReaderDataProvider(args.First()));
                 case 8:
-                    return new Day08Solver(new NodeFileReaderDataProvider(args.First()));
+                    return new Day08Solver(new Day08NodeFileReaderDataProvider(args.First()));
                 case 9:
-                    return new Day09Solver(new MarbleGameFileReaderDataProvider(args.First()));
+                    return new Day09Solver(new Day09MarbleGameFileReaderDataProvider(args.First()));
                 case 10:
-                    return new Day10Solver(new LightFileReaderDataProvider(args.First()));
+                    return new Day10Solver(new Day10LightFileReaderDataProvider(args.First()));
                 case 11:
                     return new Day11Solver(int.Parse(args.First()));
                 default:

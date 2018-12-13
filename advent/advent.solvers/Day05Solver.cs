@@ -17,14 +17,14 @@ namespace advent.solvers
 
         public string SolveFirstPart()
         {
-            var polymer = dataProvider.GetData().First();
+            var polymer = dataProvider.GetData();
             var reactedPolymer = React(polymer);
             return reactedPolymer.Length.ToString();
         }
 
         public string SolveSecondPart()
         {
-            var polymer = dataProvider.GetData().First();
+            var polymer = dataProvider.GetData();
             IList<string> improvedPolymers = new List<string>();
             foreach (var problemUnit in "abcdefghijklmnopqrstuvwxyz")
             {

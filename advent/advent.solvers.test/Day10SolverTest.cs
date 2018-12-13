@@ -11,7 +11,7 @@ namespace advent.solvers.test
 
         public Day10SolverTest()
         {
-            var dataProvider = new Mock<DataProvider<Day10Solver.Light>>();
+            var dataProvider = new Mock<DataProvider<IList<Day10Solver.Light>>>();
             dataProvider.Setup(dp => dp.GetData())
                 .Returns(new List<Day10Solver.Light>
                 {

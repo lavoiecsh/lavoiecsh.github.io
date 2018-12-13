@@ -7,9 +7,9 @@ namespace advent.solvers
     {
         public string ProblemName => "No Matter How You Slice It";
 
-        private readonly DataProvider<Claim> dataProvider;
+        private readonly DataProvider<IEnumerable<Claim>> dataProvider;
 
-        public Day03Solver(DataProvider<Claim> dataProvider)
+        public Day03Solver(DataProvider<IEnumerable<Claim>> dataProvider)
         {
             this.dataProvider = dataProvider;
         }
@@ -31,65 +31,65 @@ namespace advent.solvers
                 canvas.AddClaim(claim);
             return claims.Single(claim => claim.HasNoConflicts()).Id.ToString();
         }
-    }
 
-    internal class Canvas
-    {
-        private readonly IList<Claim>[,] canvas;
-
-        public Canvas(int width, int height)
+        private class Canvas
         {
-            canvas = new IList<Claim>[width + 1, height + 1];
-            for (var i = 0; i < canvas.GetLength(0); ++i)
-            for (var j = 0; j < canvas.GetLength(1); ++j)
-                canvas[i, j] = new List<Claim>();
-        }
+            private readonly IList<Claim>[,] canvas;
 
-        public void AddClaim(Claim claim)
-        {
-            for (var i = claim.Left; i < claim.Right; ++i)
-            for (var j = claim.Top; j < claim.Bottom; ++j)
+            public Canvas(int width, int height)
             {
-                foreach (var conflictingClaim in canvas[i,j])
-                    claim.ConflictsWith(conflictingClaim);
-                canvas[i, j].Add(claim);
+                canvas = new IList<Claim>[width + 1, height + 1];
+                for (var i = 0; i < canvas.GetLength(0); ++i)
+                for (var j = 0; j < canvas.GetLength(1); ++j)
+                    canvas[i, j] = new List<Claim>();
+            }
+
+            public void AddClaim(Claim claim)
+            {
+                for (var i = claim.Left; i < claim.Right; ++i)
+                for (var j = claim.Top; j < claim.Bottom; ++j)
+                {
+                    foreach (var conflictingClaim in canvas[i, j])
+                        claim.ConflictsWith(conflictingClaim);
+                    canvas[i, j].Add(claim);
+                }
+            }
+
+            public int NumberOfSquaresWithOverlap()
+            {
+                return canvas.Cast<List<Claim>>().Count(claims => claims.Count > 1);
             }
         }
 
-        public int NumberOfSquaresWithOverlap()
+        public class Claim
         {
-            return canvas.Cast<List<Claim>>().Count(claims => claims.Count > 1);
-        }
-    }
+            public readonly int Id;
+            public readonly int Left;
+            public readonly int Top;
+            public readonly int Right;
+            public readonly int Bottom;
 
-    public class Claim
-    {
-        public readonly int Id;
-        public readonly int Left;
-        public readonly int Top;
-        public readonly int Right;
-        public readonly int Bottom;
+            private int conflicts;
 
-        private int conflicts;
+            public Claim(int id, int left, int top, int width, int height)
+            {
+                Id = id;
+                Left = left;
+                Top = top;
+                Right = Left + width;
+                Bottom = Top + height;
+            }
 
-        public Claim(int id, int left, int top, int width, int height)
-        {
-            Id = id;
-            Left = left;
-            Top = top;
-            Right = Left + width;
-            Bottom = Top + height;
-        }
-        
-        public void ConflictsWith(Claim otherClaim)
-        {
-            conflicts++;
-            otherClaim.conflicts++;
-        }
+            public void ConflictsWith(Claim otherClaim)
+            {
+                conflicts++;
+                otherClaim.conflicts++;
+            }
 
-        public bool HasNoConflicts()
-        {
-            return conflicts == 0;
+            public bool HasNoConflicts()
+            {
+                return conflicts == 0;
+            }
         }
     }
 }

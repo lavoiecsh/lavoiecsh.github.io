@@ -8,10 +8,10 @@ namespace advent.solvers
     {
         public string ProblemName => "Chronal Coordinates";
 
-        private readonly DataProvider<Location> dataProvider;
+        private readonly DataProvider<IList<Location>> dataProvider;
         private readonly int maxDistanceSumAllowed;
 
-        public Day06Solver(DataProvider<Location> dataProvider, int maxDistanceSumAllowed = 10000)
+        public Day06Solver(DataProvider<IList<Location>> dataProvider, int maxDistanceSumAllowed = 10000)
         {
             this.dataProvider = dataProvider;
             this.maxDistanceSumAllowed = maxDistanceSumAllowed;
@@ -19,7 +19,7 @@ namespace advent.solvers
 
         public string SolveFirstPart()
         {
-            var locations = dataProvider.GetData().ToList();
+            var locations = dataProvider.GetData();
             var maxX = locations.Max(l => l.X);
             var maxY = locations.Max(l => l.Y);
             for (var i = 0; i <= maxX; ++i)
@@ -42,7 +42,7 @@ namespace advent.solvers
 
         public string SolveSecondPart()
         {
-            var locations = dataProvider.GetData().ToList();
+            var locations = dataProvider.GetData();
             var maxX = locations.Max(l => l.X);
             var maxY = locations.Max(l => l.Y);
             var locationsInArea = 0;

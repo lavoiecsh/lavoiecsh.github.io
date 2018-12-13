@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Moq;
 using Xunit;
 
@@ -7,11 +8,11 @@ namespace advent.solvers.test
     {
         private readonly Solver solver;
 
-        private readonly Mock<DataProvider<string>> dataProvider;
+        private readonly Mock<DataProvider<IEnumerable<string>>> dataProvider;
 
         public Day02SolverTest()
         {
-            dataProvider = new Mock<DataProvider<string>>();
+            dataProvider = new Mock<DataProvider<IEnumerable<string>>>();
             solver = new Day02Solver(dataProvider.Object);
         }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Moq;
 using Xunit;
 
@@ -9,7 +10,7 @@ namespace advent.solvers.test
 
         public Day06SolverTest()
         {
-            var dataProvider = new Mock<DataProvider<Day06Solver.Location>>();
+            var dataProvider = new Mock<DataProvider<IList<Day06Solver.Location>>>();
             dataProvider.Setup(dp => dp.GetData())
                 .Returns(new[]
                 {

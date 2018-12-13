@@ -10,8 +10,8 @@ namespace advent.solvers.test
         public Day05SolverTest()
         {
             var dataProvider = new Mock<DataProvider<string>>();
-            dataProvider.Setup(dp => dp.GetData()).Returns(new[] {"dabAcCaCBAcCcaDA"});
-            
+            dataProvider.Setup(dp => dp.GetData()).Returns("dabAcCaCBAcCcaDA");
+
             solver = new Day05Solver(dataProvider.Object);
         }
 

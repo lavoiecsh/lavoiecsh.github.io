@@ -5,12 +5,12 @@ using Xunit;
 
 namespace advent.util.test
 {
-    public class StepFileReaderDataProviderTest
+    public class Day07StepFileReaderDataProviderTest
     {
         [Fact]
         public void ReturnsStepsFromFile()
         {
-            const string filename = "data\\step_list.txt";
+            const string filename = "data\\day07_step_list.txt";
             const int minimumTime = 30;
             var steps = new List<Day07Solver.Step>
             {
@@ -28,7 +28,7 @@ namespace advent.util.test
             AddRequirement(steps, 'E', 'B');
             AddRequirement(steps, 'E', 'D');
             AddRequirement(steps, 'E', 'F');
-            Assert.Equal(steps, new StepFileReaderDataProvider(filename, minimumTime).GetData(), new StepComparer());
+            Assert.Equal(steps, new Day07StepFileReaderDataProvider(filename, minimumTime).GetData(), new StepComparer());
         }
 
         private static void AddRequirement(IList<Day07Solver.Step> steps, char step, char requires)

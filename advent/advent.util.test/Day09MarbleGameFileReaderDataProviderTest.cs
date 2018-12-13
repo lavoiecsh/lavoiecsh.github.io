@@ -4,21 +4,14 @@ using Xunit;
 
 namespace advent.util.test
 {
-    public class MarbleGameFileReaderDataProviderTest
+    public class Day09MarbleGameFileReaderDataProviderTest
     {
         [Fact]
         public void ReturnsMarbleGamesFromFile()
         {
-            const string filename = "data\\marble_game_list.txt";
-            var expected = new List<Day09Solver.MarbleGame>
-            {
-                new Day09Solver.MarbleGame(10, 1618),
-                new Day09Solver.MarbleGame(13, 7999),
-                new Day09Solver.MarbleGame(17, 1104),
-                new Day09Solver.MarbleGame(21, 6111),
-                new Day09Solver.MarbleGame(30, 5807)
-            };
-            var dp = new MarbleGameFileReaderDataProvider(filename);
+            const string filename = "data\\day09_marble_game.txt";
+            var expected = new Day09Solver.MarbleGame(10, 1618);
+            var dp = new Day09MarbleGameFileReaderDataProvider(filename);
             Assert.Equal(expected, dp.GetData(), new MarbleGameComparer());
         }
 

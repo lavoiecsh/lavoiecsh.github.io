@@ -4,12 +4,12 @@ using Xunit;
 
 namespace advent.util.test
 {
-    public class LocationFileReaderDataProviderTest
+    public class Day06LocationFileReaderDataProviderTest
     {
         [Fact]
         public void ReturnsCoordinatesFromFile()
         {
-            const string filename = "data\\coordinate_list.txt";
+            const string filename = "data\\day06_location_list.txt";
             var expected = new[]
             {
                 new Day06Solver.Location(1, 1),
@@ -19,7 +19,7 @@ namespace advent.util.test
                 new Day06Solver.Location(5, 5),
                 new Day06Solver.Location(8, 9)
             };
-            var coordinates = new LocationFileReaderDataProvider(filename).GetData();
+            var coordinates = new Day06LocationFileReaderDataProvider(filename).GetData();
             Assert.Equal(expected, coordinates, new CoordinateComparer());
         }
     }

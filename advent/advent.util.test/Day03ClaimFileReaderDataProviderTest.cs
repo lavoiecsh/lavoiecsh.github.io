@@ -4,26 +4,26 @@ using Xunit;
 
 namespace advent.util.test
 {
-    public class ClaimFileReaderDataProviderTest
+    public class Day03ClaimFileReaderDataProviderTest
     {
         [Fact]
         public void ReturnsClaimsFromFile()
         {
-            const string filename = "data\\claim_list.txt";
+            const string filename = "data\\day03_claim_list.txt";
             var expected = new[]
             {
-                new Claim(1, 1, 3, 4, 4),
-                new Claim(2, 3, 1, 4, 4),
-                new Claim(3, 5, 5, 2, 2)
+                new Day03Solver.Claim(1, 1, 3, 4, 4),
+                new Day03Solver.Claim(2, 3, 1, 4, 4),
+                new Day03Solver.Claim(3, 5, 5, 2, 2)
             };
-            var claims = new ClaimFileReaderDataProvider(filename).GetData();
+            var claims = new Day03ClaimFileReaderDataProvider(filename).GetData();
             Assert.Equal(expected, claims, new ClaimComparer());
         }
     }
 
-    public class ClaimComparer : IEqualityComparer<Claim>
+    public class ClaimComparer : IEqualityComparer<Day03Solver.Claim>
     {
-        public bool Equals(Claim x, Claim y)
+        public bool Equals(Day03Solver.Claim x, Day03Solver.Claim y)
         {
             return x.Id == y.Id &&
                    x.Top == y.Top &&
@@ -32,7 +32,7 @@ namespace advent.util.test
                    x.Right == y.Right;
         }
 
-        public int GetHashCode(Claim obj)
+        public int GetHashCode(Day03Solver.Claim obj)
         {
             throw new System.NotImplementedException();
         }

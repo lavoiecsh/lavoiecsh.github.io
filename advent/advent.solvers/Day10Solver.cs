@@ -9,21 +9,16 @@ namespace advent.solvers
     {
         public string ProblemName => "The Stars Align";
 
-        private readonly DataProvider<Light> dataProvider;
+        private readonly DataProvider<IList<Light>> dataProvider;
 
-        public Day10Solver(DataProvider<Light> dataProvider)
+        public Day10Solver(DataProvider<IList<Light>> dataProvider)
         {
             this.dataProvider = dataProvider;
         }
 
-        public Sky GetSky()
-        {
-            return new Sky(dataProvider.GetData().ToList());
-        }
-
         public string SolveFirstPart()
         {
-            var sky = new Sky(dataProvider.GetData().ToList());
+            var sky = new Sky(dataProvider.GetData());
             var smallest = GetSmallestSky(sky);
             return Print(smallest);
         }
@@ -90,10 +85,10 @@ namespace advent.solvers
             public readonly IList<Light> Lights;
             public (int X, int Y) Size;
 
-            public Sky(IEnumerable<Light> lights)
+            public Sky(IList<Light> lights)
             {
                 Time = 0;
-                Lights = lights.ToList();
+                Lights = lights;
                 Size.X = Lights.Max(l => l.Position.X) - Lights.Min(l => l.Position.X);
                 Size.Y = Lights.Max(l => l.Position.Y) - Lights.Min(l => l.Position.Y);
             }
@@ -114,7 +109,8 @@ namespace advent.solvers
 
             public object Clone()
             {
-                return new Sky(Lights.Select(l => new Light(l.Position.X, l.Position.Y, l.Velocity.X, l.Velocity.Y))) { Time = Time };
+                return new Sky(Lights.Select(l => new Light(l.Position.X, l.Position.Y, l.Velocity.X, l.Velocity.Y))
+                    .ToList()) {Time = Time};
             }
         }
     }

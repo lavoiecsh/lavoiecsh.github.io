@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="data\step_list.txt">
+      <None Update="data\day07_step_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       <None Update="data\string_list.txt">
@@ -26,22 +26,22 @@
       <None Update="data\int_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="data\guard_list.txt">
+      <None Update="data\day04_guard_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="data\coordinate_list.txt">
+      <None Update="data\day06_location_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="data\claim_list.txt">
+      <None Update="data\day03_claim_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="data\node_list.txt">
+      <None Update="data\day08_node_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="data\marble_game_list.txt">
+      <None Update="data\day09_marble_game.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="data\light_list.txt">
+      <None Update="data\day10_light_list.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>

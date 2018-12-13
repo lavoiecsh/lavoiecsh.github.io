@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 
 namespace advent.solvers
@@ -6,9 +7,9 @@ namespace advent.solvers
     {
         public string ProblemName => "Inventory Management System";
         
-        private readonly DataProvider<string> dataProvider;
+        private readonly DataProvider<IEnumerable<string>> dataProvider;
 
-        public Day02Solver(DataProvider<string> dataProvider)
+        public Day02Solver(DataProvider<IEnumerable<string>> dataProvider)
         {
             this.dataProvider = dataProvider;
         }

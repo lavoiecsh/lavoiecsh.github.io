@@ -8,11 +8,11 @@ namespace advent.solvers.test
         private readonly Solver solver;
 
         private readonly Mock<DataProvider<Day09Solver.MarbleGame>> dataProvider;
-        
+
         public Day09SolverTest()
         {
             dataProvider = new Mock<DataProvider<Day09Solver.MarbleGame>>();
-            
+
             solver = new Day09Solver(dataProvider.Object);
         }
 
@@ -25,8 +25,8 @@ namespace advent.solvers.test
         public void ReturnsHighestScore(int playerCount, int lastMarble, int expectedScore)
         {
             dataProvider.Setup(dp => dp.GetData())
-                .Returns(new[] {new Day09Solver.MarbleGame(playerCount, lastMarble)});
-            
+                .Returns(new Day09Solver.MarbleGame(playerCount, lastMarble));
+
             Assert.Equal(expectedScore.ToString(), solver.SolveFirstPart());
         }
     }

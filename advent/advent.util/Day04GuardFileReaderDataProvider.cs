@@ -6,16 +6,16 @@ using advent.solvers;
 
 namespace advent.util
 {
-    public class GuardFileReaderDataProvider : DataProvider<Guard>
+    public class Day04GuardFileReaderDataProvider : DataProvider<IEnumerable<Day04Solver.Guard>>
     {
         private readonly string filename;
 
-        public GuardFileReaderDataProvider(string filename)
+        public Day04GuardFileReaderDataProvider(string filename)
         {
             this.filename = filename;
         }
 
-        public IEnumerable<Guard> GetData()
+        public IEnumerable<Day04Solver.Guard> GetData()
         {
             var lines = File.ReadAllLines(filename).ToList();
             lines.Sort();
@@ -27,8 +27,8 @@ namespace advent.util
 
         private class GuardDataReader
         {
-            private readonly IList<Guard> guards;
-            private Guard currentGuard;
+            private readonly IList<Day04Solver.Guard> guards;
+            private Day04Solver.Guard currentGuard;
             private int fallsAsleepMinute;
             private readonly Regex guardBeginsShiftParsingRegex;
             private readonly Regex guardFallsAsleepParsingRegex;
@@ -36,7 +36,7 @@ namespace advent.util
 
             internal GuardDataReader()
             {
-                guards = new List<Guard>();
+                guards = new List<Day04Solver.Guard>();
                 currentGuard = null;
                 fallsAsleepMinute = 0;
                 const string timestampRegexFormat = "\\[(\\d{4})-(\\d{2})-(\\d{2}) (\\d{2}):(\\d{2})\\]";
@@ -45,7 +45,7 @@ namespace advent.util
                 guardWakesUpParsingRegex = new Regex($"^{timestampRegexFormat} wakes up");
             }
 
-            internal IEnumerable<Guard> GetGuards()
+            internal IEnumerable<Day04Solver.Guard> GetGuards()
             {
                 return guards;
             }
@@ -65,7 +65,7 @@ namespace advent.util
                 var id = int.Parse(match.Groups[6].Value);
                 currentGuard = guards.SingleOrDefault(g => g.Id == id);
                 if (currentGuard != null) return;
-                currentGuard = new Guard(id);
+                currentGuard = new Day04Solver.Guard(id);
                 guards.Add(currentGuard);
             }
 
@@ -77,7 +77,7 @@ namespace advent.util
             private void HandleWakesUp(Match match)
             {
                 var wakesUpMinute = match.Groups[5].Value == "00" ? 0 : int.Parse(match.Groups[5].Value);
-                currentGuard.SleepIntervals.Add(new Guard.SleepInterval(fallsAsleepMinute, wakesUpMinute));
+                currentGuard.SleepIntervals.Add(new Day04Solver.Guard.SleepInterval(fallsAsleepMinute, wakesUpMinute));
             }
         }
     }

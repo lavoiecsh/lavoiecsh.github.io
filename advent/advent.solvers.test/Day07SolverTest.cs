@@ -28,7 +28,7 @@ namespace advent.solvers.test
             AddRequirement(steps, 'E', 'B');
             AddRequirement(steps, 'E', 'D');
             AddRequirement(steps, 'E', 'F');
-            var dataProvider = new Mock<DataProvider<Day07Solver.Step>>();
+            var dataProvider = new Mock<DataProvider<IList<Day07Solver.Step>>>();
             dataProvider.Setup(dp => dp.GetData()).Returns(steps);
             
             solver = new Day07Solver(dataProvider.Object, 2);

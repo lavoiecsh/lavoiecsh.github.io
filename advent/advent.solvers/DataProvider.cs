@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace advent.solvers
+﻿namespace advent.solvers
 {
     public interface DataProvider<out T>
     {
-        IEnumerable<T> GetData();
+        T GetData();
     }
 }

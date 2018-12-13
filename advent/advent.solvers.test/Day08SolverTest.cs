@@ -15,7 +15,7 @@ namespace advent.solvers.test
             var nodeA = new Day08Solver.Node(new[] {nodeB, nodeC}, new[] {1, 1, 2});
 
             var dataProvider = new Mock<DataProvider<Day08Solver.Node>>();
-            dataProvider.Setup(dp => dp.GetData()).Returns(new[] {nodeA});
+            dataProvider.Setup(dp => dp.GetData()).Returns(nodeA);
             solver = new Day08Solver(dataProvider.Object);
         }
 

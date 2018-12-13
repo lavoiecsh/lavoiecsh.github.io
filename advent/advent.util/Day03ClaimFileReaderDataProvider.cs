@@ -6,23 +6,23 @@ using advent.solvers;
 
 namespace advent.util
 {
-    public class ClaimFileReaderDataProvider : DataProvider<Claim>
+    public class Day03ClaimFileReaderDataProvider : DataProvider<IEnumerable<Day03Solver.Claim>>
     {
         private readonly string filename;
         private readonly Regex claimParsingRegex;
 
-        public ClaimFileReaderDataProvider(string filename)
+        public Day03ClaimFileReaderDataProvider(string filename)
         {
             this.filename = filename;
             claimParsingRegex = new Regex("^#(\\d+) @ (\\d+),(\\d+): (\\d+)x(\\d+)$");
         }
 
-        public IEnumerable<Claim> GetData()
+        public IEnumerable<Day03Solver.Claim> GetData()
         {
             return File.ReadAllLines(filename).Select(MakeClaim);
         }
 
-        private Claim MakeClaim(string line)
+        private Day03Solver.Claim MakeClaim(string line)
         {
             var match = claimParsingRegex.Match(line);
             var id = int.Parse(match.Groups[1].Value);
@@ -30,7 +30,7 @@ namespace advent.util
             var top = int.Parse(match.Groups[3].Value);
             var width = int.Parse(match.Groups[4].Value);
             var height = int.Parse(match.Groups[5].Value);
-            return new Claim(id, left, top, width, height);
+            return new Day03Solver.Claim(id, left, top, width, height);
         }
     }
 }

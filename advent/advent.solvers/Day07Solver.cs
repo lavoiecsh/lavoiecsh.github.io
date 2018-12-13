@@ -8,10 +8,10 @@ namespace advent.solvers
     {
         public string ProblemName => "The Sum of Its Parts";
 
-        private readonly DataProvider<Step> dataProvider;
+        private readonly DataProvider<IList<Step>> dataProvider;
         private readonly int workerCount;
 
-        public Day07Solver(DataProvider<Step> dataProvider, int workerCount = 5)
+        public Day07Solver(DataProvider<IList<Step>> dataProvider, int workerCount = 5)
         {
             this.dataProvider = dataProvider;
             this.workerCount = workerCount;
@@ -19,7 +19,7 @@ namespace advent.solvers
 
         public string SolveFirstPart()
         {
-            var steps = dataProvider.GetData().ToList();
+            var steps = dataProvider.GetData();
             var order = new StringBuilder();
             while (steps.Any(s => !s.IsCompleted))
             {
@@ -33,7 +33,7 @@ namespace advent.solvers
 
         public string SolveSecondPart()
         {
-            var steps = dataProvider.GetData().ToList();
+            var steps = dataProvider.GetData();
             var workers = Enumerable.Range(1, workerCount).Select(_ => new Worker()).ToList();
             var totalTime = 0;
             while (steps.Any(s => !s.IsCompleted))

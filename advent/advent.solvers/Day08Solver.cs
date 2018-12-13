@@ -16,12 +16,12 @@ namespace advent.solvers
 
         public string SolveFirstPart()
         {
-            return dataProvider.GetData().First().MetadataSum().ToString();
+            return dataProvider.GetData().MetadataSum().ToString();
         }
 
         public string SolveSecondPart()
         {
-            return dataProvider.GetData().First().Value().ToString();
+            return dataProvider.GetData().Value().ToString();
         }
 
         public class Node

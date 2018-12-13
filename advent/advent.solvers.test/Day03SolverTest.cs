@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Moq;
 using Xunit;
 
@@ -11,11 +12,11 @@ namespace advent.solvers.test
         {
             var claims = new[]
             {
-                new Claim(1, 1, 3, 4, 4),
-                new Claim(2, 3, 1, 4, 4),
-                new Claim(3, 5, 5, 2, 2)
+                new Day03Solver.Claim(1, 1, 3, 4, 4),
+                new Day03Solver.Claim(2, 3, 1, 4, 4),
+                new Day03Solver.Claim(3, 5, 5, 2, 2)
             };
-            var dataProvider = new Mock<DataProvider<Claim>>();
+            var dataProvider = new Mock<DataProvider<IEnumerable<Day03Solver.Claim>>>();
             dataProvider.Setup(fr => fr.GetData()).Returns(claims);
 
             solver = new Day03Solver(dataProvider.Object);

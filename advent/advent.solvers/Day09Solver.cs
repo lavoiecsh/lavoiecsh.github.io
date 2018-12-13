@@ -16,14 +16,14 @@ namespace advent.solvers
 
         public string SolveFirstPart()
         {
-            var game = dataProvider.GetData().First();
+            var game = dataProvider.GetData();
             game.PlayGame();
             return game.HighestScore().ToString();
         }
 
         public string SolveSecondPart()
         {
-            var game = dataProvider.GetData().First();
+            var game = dataProvider.GetData();
             game.LastMarble *= 100;
             game.PlayGame();
             return game.HighestScore().ToString();

@@ -8,9 +8,9 @@ namespace advent.solvers
     {
         public string ProblemName => "ChronalCalibration";
         
-        private readonly DataProvider<int> dataProvider;
+        private readonly DataProvider<IEnumerable<int>> dataProvider;
 
-        public Day01Solver(DataProvider<int> dataProvider)
+        public Day01Solver(DataProvider<IEnumerable<int>> dataProvider)
         {
             this.dataProvider = dataProvider;
         }

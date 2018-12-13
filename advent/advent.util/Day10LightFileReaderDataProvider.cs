@@ -6,21 +6,21 @@ using advent.solvers;
 
 namespace advent.util
 {
-    public class LightFileReaderDataProvider : DataProvider<Day10Solver.Light>
+    public class Day10LightFileReaderDataProvider : DataProvider<IList<Day10Solver.Light>>
     {
         private readonly string filename;
 
         private readonly Regex lightParsingRegex;
 
-        public LightFileReaderDataProvider(string filename)
+        public Day10LightFileReaderDataProvider(string filename)
         {
             this.filename = filename;
             lightParsingRegex = new Regex("^position=<[ ]*([-]?\\d+),[ ]*([-]?\\d+)> velocity=<[ ]*([-]?\\d+),[ ]*([-]?\\d+)>$");
         }
 
-        public IEnumerable<Day10Solver.Light> GetData()
+        public IList<Day10Solver.Light> GetData()
         {
-            return File.ReadAllLines(filename).Select(MakeLight);
+            return File.ReadAllLines(filename).Select(MakeLight).ToList();
         }
 
         private Day10Solver.Light MakeLight(string line)
