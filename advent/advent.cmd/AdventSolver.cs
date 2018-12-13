@@ -46,6 +46,8 @@ namespace advent.cmd
                     return new Day10Solver(new Day10LightFileReaderDataProvider(args.First()));
                 case 11:
                     return new Day11Solver(int.Parse(args.First()));
+                case 12:
+                    return new Day12Solver(new Day12PlantCavernFileReaderDataProvider(args.First()));
                 default:
                     return null;
             }
