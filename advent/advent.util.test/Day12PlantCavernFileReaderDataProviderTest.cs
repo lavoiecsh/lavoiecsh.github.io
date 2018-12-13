@@ -1,3 +1,4 @@
+using System.Linq;
 using Xunit;
 
 namespace advent.util.test
@@ -27,7 +28,7 @@ namespace advent.util.test
                 "### #",
                 "#### "
             };
-            Assert.Equal(expectedNotes, cavern.Notes);
+            Assert.Equal(expectedNotes, cavern.Notes.Where(kv => kv.Value == '#').Select(kv => kv.Key));
         }
     }
 }
