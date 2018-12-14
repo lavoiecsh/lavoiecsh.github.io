@@ -14,6 +14,7 @@ namespace advent.cmd
             var day = int.Parse(args[0]);
             var problem = int.Parse(args[1]);
             var solver = GetSolver(day, args.Skip(2).ToList());
+            Console.WriteLine($"Solving problem {day}-{problem} ({solver.ProblemName}) at {DateTime.Now}");
             var watch = Stopwatch.StartNew();
             var solution = problem == 1 ? solver.SolveFirstPart() : solver.SolveSecondPart();
             watch.Stop();
@@ -50,6 +51,8 @@ namespace advent.cmd
                     return new Day12Solver(new Day12PlantCavernFileReaderDataProvider(args.First()));
                 case 13:
                     return new Day13Solver(new Day13CartMapFileReaderDataProvider(args.First()));
+                case 14:
+                    return new Day14Solver(args.First());
                 default:
                     return null;
             }
