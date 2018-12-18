@@ -56,6 +56,8 @@ namespace advent.cmd
                 case 16:
                     var dataProvider = new Day16ProcessorFileReaderDataProvider(args.First());
                     return new Day16Solver(dataProvider, dataProvider);
+                case 17:
+                    return new Day17Solver(new Day17ClayFileReaderDataProvider(args.First()));
                 default:
                     return null;
             }

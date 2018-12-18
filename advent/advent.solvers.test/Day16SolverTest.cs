@@ -1,3 +1,4 @@
+using System.Linq;
 using Xunit;
 
 namespace advent.solvers.test
@@ -139,7 +140,7 @@ namespace advent.solvers.test
         public void CountsPossibleOperations()
         {
             processor.Registers = new[] {3, 2, 1, 1};
-            var count = processor.GetPossibleOperations(2, 1, 2, new[] {3, 2, 2, 1});
+            var count = processor.GetPossibleOperations(2, 1, 2, new[] {3, 2, 2, 1}).Count();
             Assert.Equal(3, count);
         }
     }
