@@ -41,12 +41,12 @@ namespace advent.solvers
 
         public class Processor
         {
-            public readonly long[] Registers;
+            public readonly int[] Registers;
             private readonly int instructionPointer;
 
             public Processor(int instructionPointer)
             {
-                Registers = new long[] {0, 0, 0, 0, 0, 0};
+                Registers = new [] {0, 0, 0, 0, 0, 0};
                 this.instructionPointer = instructionPointer;
             }
 
@@ -54,7 +54,7 @@ namespace advent.solvers
             {
                 while (Registers[instructionPointer] < instructions.Count)
                 {
-                    var instruction = instructions[(int) Registers[instructionPointer]];
+                    var instruction = instructions[Registers[instructionPointer]];
                     Execute(instruction.Operation, instruction.A, instruction.B, instruction.C);
                     Registers[instructionPointer]++;
                 }

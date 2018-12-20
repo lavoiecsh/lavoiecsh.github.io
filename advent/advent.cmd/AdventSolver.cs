@@ -62,6 +62,8 @@ namespace advent.cmd
                     return new Day18Solver(new Day18LumberMapFileReaderDataProvider(args.First()));
                 case 19:
                     return new Day19Solver(new Day19ProcessorInstructionFileReaderDataProvider(args.First()));
+                case 20:
+                    return new Day20Solver(new SimpleFileReaderDataProvider(args.First()));
                 default:
                     return null;
             }
