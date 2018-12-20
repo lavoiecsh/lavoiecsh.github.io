@@ -35,7 +35,7 @@ namespace advent.solvers.test
         public void ExecutesOperationsAccordingToInstructionPointer()
         {
             processor.Execute(instructions);
-            Assert.Equal(new long[]{7, 5, 6, 0, 0, 9}, processor.Registers);
+            Assert.Equal(new []{7, 5, 6, 0, 0, 9}, processor.Registers);
         }
 
         [Fact]
