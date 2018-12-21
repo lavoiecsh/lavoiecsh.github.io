@@ -52,65 +52,74 @@ namespace advent.solvers
 
             public void Execute(IList<ProcessorInstruction> instructions)
             {
-                while (Registers[instructionPointer] < instructions.Count)
+                while (NextInstruction() < instructions.Count)
                 {
-                    var instruction = instructions[Registers[instructionPointer]];
-                    Execute(instruction.Operation, instruction.A, instruction.B, instruction.C);
-                    Registers[instructionPointer]++;
+                    Execute(instructions[NextInstruction()]);
+                    IncrementInstructionPointer();
                 }
             }
 
-            private void Execute(Operation operation, int a, int b, int c)
+            internal int NextInstruction()
             {
-                switch (operation)
+                return Registers[instructionPointer];
+            }
+
+            internal void IncrementInstructionPointer()
+            {
+                Registers[instructionPointer]++;
+            }
+
+            internal void Execute(ProcessorInstruction instruction)
+            {
+                switch (instruction.Operation)
                 {
                     case Operation.addr:
-                        Registers[c] = Registers[a] + Registers[b];
+                        Registers[instruction.C] = Registers[instruction.A] + Registers[instruction.B];
                         break;
                     case Operation.addi:
-                        Registers[c] = Registers[a] + b;
+                        Registers[instruction.C] = Registers[instruction.A] + instruction.B;
                         break;
                     case Operation.mulr:
-                        Registers[c] = Registers[a] * Registers[b];
+                        Registers[instruction.C] = Registers[instruction.A] * Registers[instruction.B];
                         break;
                     case Operation.muli:
-                        Registers[c] = Registers[a] * b;
+                        Registers[instruction.C] = Registers[instruction.A] * instruction.B;
                         break;
                     case Operation.banr:
-                        Registers[c] = Registers[a] & Registers[b];
+                        Registers[instruction.C] = Registers[instruction.A] & Registers[instruction.B];
                         break;
                     case Operation.bani:
-                        Registers[c] = Registers[a] & b;
+                        Registers[instruction.C] = Registers[instruction.A] & instruction.B;
                         break;
                     case Operation.borr:
-                        Registers[c] = Registers[a] | Registers[b];
+                        Registers[instruction.C] = Registers[instruction.A] | Registers[instruction.B];
                         break;
                     case Operation.bori:
-                        Registers[c] = Registers[a] | b;
+                        Registers[instruction.C] = Registers[instruction.A] | instruction.B;
                         break;
                     case Operation.setr:
-                        Registers[c] = Registers[a];
+                        Registers[instruction.C] = Registers[instruction.A];
                         break;
                     case Operation.seti:
-                        Registers[c] = a;
+                        Registers[instruction.C] = instruction.A;
                         break;
                     case Operation.gtir:
-                        Registers[c] = a > Registers[b] ? 1 : 0;
+                        Registers[instruction.C] = instruction.A > Registers[instruction.B] ? 1 : 0;
                         break;
                     case Operation.gtri:
-                        Registers[c] = Registers[a] > b ? 1 : 0;
+                        Registers[instruction.C] = Registers[instruction.A] > instruction.B ? 1 : 0;
                         break;
                     case Operation.gtrr:
-                        Registers[c] = Registers[a] > Registers[b] ? 1 : 0;
+                        Registers[instruction.C] = Registers[instruction.A] > Registers[instruction.B] ? 1 : 0;
                         break;
                     case Operation.eqir:
-                        Registers[c] = a == Registers[b] ? 1 : 0;
+                        Registers[instruction.C] = instruction.A == Registers[instruction.B] ? 1 : 0;
                         break;
                     case Operation.eqri:
-                        Registers[c] = Registers[a] == b ? 1 : 0;
+                        Registers[instruction.C] = Registers[instruction.A] == instruction.B ? 1 : 0;
                         break;
                     case Operation.eqrr:
-                        Registers[c] = Registers[a] == Registers[b] ? 1 : 0;
+                        Registers[instruction.C] = Registers[instruction.A] == Registers[instruction.B] ? 1 : 0;
                         break;
                 }
             }
