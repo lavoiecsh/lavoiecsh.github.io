@@ -163,6 +163,7 @@ namespace advent.solvers
             private enum IntersectionTurn
             {
                 Left,
+                // ReSharper disable once UnusedMember.Local
                 Straight,
                 Right
             }
