@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 namespace advent.solvers
@@ -27,9 +29,7 @@ namespace advent.solvers
         public string SolveSecondPart()
         {
             var lumberMap = dataProvider.GetData();
-            lumberMap.Iterate(1_000_000_000);
-            var trees = lumberMap.Count(AcreType.Trees);
-            var lumberyards = lumberMap.Count(AcreType.Lumberyard);
+            var (trees, lumberyards) = lumberMap.SuperIterate(1000000000);
             return (trees * lumberyards).ToString();
         }
 
@@ -124,12 +124,48 @@ namespace advent.solvers
             {
                 var watch = new Stopwatch();
                 watch.Start();
+                var counts = new List<(int Trees, int Lumberyards)>
+                {
+                    (Count(AcreType.Trees), Count(AcreType.Lumberyard))
+                };
                 for (var i = 0; i < times; ++i)
                 {
-                    if (i % 1000 == 0)
-                        Console.WriteLine($"{i}: {watch.Elapsed.Seconds}");
                     Iterate();
+                    var trees = Count(AcreType.Trees);
+                    var lumberyards = Count(AcreType.Lumberyard);
+                    Console.WriteLine($"{i}: {trees} * {lumberyards} = {trees * lumberyards} {counts.Contains((trees, lumberyards))} ({watch.Elapsed.Minutes}:{watch.Elapsed.Seconds})");
+                    counts.Add((trees, lumberyards));
                 }
+            }
+
+            internal (int Trees, int Lumberyards) SuperIterate(int times)
+            {
+                var watch = new Stopwatch();
+                watch.Start();
+                var maps = new Dictionary<string, (int FirstSeen, int Trees, int Lumberyards)>
+                {
+                    {ToString(), (0, Count(AcreType.Trees), Count(AcreType.Lumberyard))}
+                };
+                var loopStart = -1;
+                var loopEnd = -1;
+                var timesRemaining = -1;
+                for (var i = 1; i <= times; ++i)
+                {
+                    Iterate();
+                    var map = ToString();
+                    if (maps.ContainsKey(map))
+                    {
+                        loopStart = maps[map].FirstSeen;
+                        loopEnd = i - 1;
+                        timesRemaining = times - i;
+                        break;
+                    }
+                    maps.Add(map, (i, Trees: Count(AcreType.Trees), Lumberyards: Count(AcreType.Lumberyard)));
+                }
+
+                var remainder = timesRemaining % (loopEnd - loopStart + 1);
+                var(_, trees, lumberyards) = maps.Single(kv => kv.Value.FirstSeen == loopStart + remainder).Value;
+                return (trees, lumberyards);
             }
 
             internal int Count(AcreType type)

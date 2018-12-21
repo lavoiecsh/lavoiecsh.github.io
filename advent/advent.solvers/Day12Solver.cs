@@ -29,14 +29,27 @@ namespace advent.solvers
             var cavern = dataProvider.GetData();
             var watch = new Stopwatch();
             watch.Start();
-            for (long i = 0; i < 50000000000; ++i)
+            var lastState = cavern.State;
+            var lastSum = cavern.Sum();
+            long timesRemaining = -1;
+            var sumDifference = -1;
+            const long times = 50000000000;
+            for (long i = 1; i <= 50000000000; ++i)
             {
-                if (i % 1000000 == 0)
-                    Console.WriteLine($"{i}: {watch.ElapsedMilliseconds / 1000}");
                 cavern.NextGeneration();
+                if (cavern.State == lastState)
+                {
+                    sumDifference = cavern.Sum() - lastSum;
+                    timesRemaining = times - i + 1;
+                    break;
+                }
+
+                lastState = cavern.State;
+                lastSum = cavern.Sum();
             }
 
-            return cavern.Sum().ToString();
+            var sum = lastSum + timesRemaining * sumDifference;
+            return sum.ToString();
         }
 
         public class PlantCavern
@@ -69,11 +82,9 @@ namespace advent.solvers
                 State = State.Trim();
             }
 
-            public long Sum()
+            public int Sum()
             {
-                return State.Zip(Enumerable.Range(StartIndex, State.Length),
-                        (p, i) => p == '#' ? (long) i : (long) 0)
-                    .Sum();
+                return State.Zip(Enumerable.Range(StartIndex, State.Length), (p, i) => p == '#' ? i : 0).Sum();
             }
         }
     }
