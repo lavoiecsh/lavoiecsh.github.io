@@ -53,6 +53,8 @@ namespace advent.cmd
                     return new Day13Solver(new Day13CartMapFileReaderDataProvider(args.First()));
                 case 14:
                     return new Day14Solver(args.First());
+                case 15:
+                    return new Day15Solver(new Day15MapFileReaderDataProvider(args.First()));
                 case 16:
                     var dataProvider = new Day16ProcessorFileReaderDataProvider(args.First());
                     return new Day16Solver(dataProvider, dataProvider);

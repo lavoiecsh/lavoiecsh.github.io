@@ -8,6 +8,13 @@ namespace advent.solvers
     {
         public string ProblemName => "Beverage Bandits";
 
+        private readonly DataProvider<Map> dataProvider;
+
+        public Day15Solver(DataProvider<Map> dataProvider)
+        {
+            this.dataProvider = dataProvider;
+        }
+
         public string SolveFirstPart()
         {
             throw new System.NotImplementedException();
@@ -32,10 +39,10 @@ namespace advent.solvers
 
         public class Unit
         {
-            public Position Position { get; private set; }
+            public Position Position { get; }
             public readonly UnitType Type;
-            public int HitPoints { get; private set; }
-            public int AttackPower { get; private set; }
+            public int HitPoints { get; }
+            public int AttackPower { get; }
 
             public Unit(Position position, UnitType type)
             {
@@ -51,6 +58,22 @@ namespace advent.solvers
                 Goblin
             }
 
+            internal void Move(Map map)
+            {
+                var nearestPosition = NearestPosition(map);
+                var distances = new List<(Position P, int D)>
+                {
+                    (nearestPosition, 0)
+                };
+                var i = 0;
+                while (i++ < distances.Count &&
+                       distances.All(d => !Equals(d.P, Position)))
+                {
+                    var current = distances[i];
+                    var above = current.P.Above();
+                }
+            }
+
             internal IEnumerable<Position> PositionsInRange(Map map)
             {
                 var enemies = map.Units.Where(unit => unit.Type != Type);
@@ -59,19 +82,32 @@ namespace advent.solvers
                     .Where(p => map.OpenTiles.Contains(p) && map.Units.All(u => !Equals(u.Position, p)));
             }
 
-            public IEnumerable<Position> ReachablePositions(Map map)
+            internal IEnumerable<Position> ReachablePositions(Map map)
             {
-                throw new NotImplementedException();
+                var reachablePositions = new List<Position> {Position};
+                for (var i = 0; i < reachablePositions.Count; ++i)
+                {
+                    var current = reachablePositions[i];
+                    AddIfReachable(reachablePositions, map, current.Above());
+                    AddIfReachable(reachablePositions, map, current.Below());
+                    AddIfReachable(reachablePositions, map, current.Left());
+                    AddIfReachable(reachablePositions, map, current.Right());
+                }
+
+                return PositionsInRange(map).Where(p => reachablePositions.Contains(p));
             }
 
-            public void Move(Position position)
+            private static void AddIfReachable(ICollection<Position> reachablePositions, Map map, Position position)
             {
-                Position = position;
+                if (reachablePositions.Contains(position)) return;
+                if (map.OpenTiles.Contains(position) &&
+                    map.Units.All(u => !Equals(u.Position, position)))
+                    reachablePositions.Add(position);
             }
 
-            public int[,] MovementMap(Map map)
+            internal Position NearestPosition(Map map)
             {
-                throw new NotImplementedException();
+                return ReachablePositions(map).OrderByReading().ThenBy(p => p.Distance(Position)).First();
             }
         }
 
@@ -80,7 +116,7 @@ namespace advent.solvers
             public readonly int X;
             public readonly int Y;
 
-            public Position(int x, int y)
+            private Position(int x, int y)
             {
                 X = x;
                 Y = y;
@@ -95,6 +131,11 @@ namespace advent.solvers
             public Position Below() => new Position(X, Y + 1);
             public Position Left() => new Position(X - 1, Y);
             public Position Right() => new Position(X + 1, Y);
+
+            public int Distance(Position other)
+            {
+                return Math.Abs(other.X - X) + Math.Abs(other.Y - Y);
+            }
 
             private bool Equals(Position other)
             {
@@ -115,6 +156,15 @@ namespace advent.solvers
                     return (X * 397) ^ Y;
                 }
             }
+        }
+    }
+
+    internal static class PositionEnumerableExtensions
+    {
+        internal static IOrderedEnumerable<Day15Solver.Position> OrderByReading(
+            this IEnumerable<Day15Solver.Position> positions)
+        {
+            return positions.OrderBy(p => p.Y).ThenBy(p => p.X);
         }
     }
 }
