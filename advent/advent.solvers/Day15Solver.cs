@@ -30,16 +30,36 @@ namespace advent.solvers
             public readonly IReadOnlyList<Position> OpenTiles;
             public readonly IList<Unit> Units;
 
+            private readonly int minX;
+            private readonly int minY;
+            private readonly int maxX;
+            private readonly int maxY;
+
             public Map(IEnumerable<Position> openTiles, IEnumerable<Unit> units)
             {
                 OpenTiles = openTiles.ToList();
                 Units = units.ToList();
+
+                minX = OpenTiles.Min(t => t.X) - 1;
+                minY = OpenTiles.Min(t => t.Y) - 1;
+                maxX = OpenTiles.Max(t => t.X) + 1;
+                maxY = OpenTiles.Max(t => t.Y) + 1;
+            }
+
+            public bool IsValid(Position p)
+            {
+                return p.X >= minX && p.X <= maxX && p.Y >= minY && p.Y <= maxY;
+            }
+
+            public bool IsOpen(Position p)
+            {
+                return OpenTiles.Contains(p) && Units.All(u => !Equals(u.Position, p));
             }
         }
 
         public class Unit
         {
-            public Position Position { get; }
+            public Position Position { get; private set; }
             public readonly UnitType Type;
             public int HitPoints { get; }
             public int AttackPower { get; }
@@ -65,13 +85,34 @@ namespace advent.solvers
                 {
                     (nearestPosition, 0)
                 };
-                var i = 0;
-                while (i++ < distances.Count &&
-                       distances.All(d => !Equals(d.P, Position)))
+                var i = -1;
+                while (++i < distances.Count)
                 {
-                    var current = distances[i];
-                    var above = current.P.Above();
+                    var (position, distance) = distances[i];
+                    var above = position.Above();
+                    if (distances.All(d => !Equals(d.P, above)) && map.IsValid(above))
+                        distances.Add((above, distance + 1));
+                    var left = position.Left();
+                    if (distances.All(d => !Equals(d.P, left)) && map.IsValid(left))
+                        distances.Add((left, distance + 1));
+                    var right = position.Right();
+                    if (distances.All(d => !Equals(d.P, right)) && map.IsValid(right))
+                        distances.Add((right, distance + 1));
+                    var below = position.Below();
+                    if (distances.All(d => !Equals(d.P, below)) && map.IsValid(below))
+                        distances.Add((below, distance + 1));
                 }
+
+                var distanceAbove = distances.Single(d => Equals(d.P, Position.Above()));
+                var distanceLeft = distances.Single(d => Equals(d.P, Position.Left()));
+                var distanceRight = distances.Single(d => Equals(d.P, Position.Right()));
+                var distanceBelow = distances.Single(d => Equals(d.P, Position.Below()));
+                var possiblePositions = new[] {distanceAbove, distanceLeft, distanceRight, distanceBelow}
+                    .Where(d => map.IsOpen(d.P))
+                    .OrderBy(d => d.D)
+                    .ToList();
+                var nearestPositions = possiblePositions.TakeWhile(d => d.D == possiblePositions.First().D);
+                Position = nearestPositions.Select(d => d.P).OrderByReading().First();
             }
 
             internal IEnumerable<Position> PositionsInRange(Map map)
