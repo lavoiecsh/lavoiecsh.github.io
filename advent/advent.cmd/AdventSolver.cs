@@ -72,6 +72,10 @@ namespace advent.cmd
                     return new Day22Solver(new Day22MazeFileReaderDataProvider(args.First()));
                 case 23:
                     return new Day23Solver(new Day23NanobotsFileReaderDataProvider(args.First()));
+                case 24:
+                    return new Day24Solver(new Day24ImmuneCombatFileReaderDataProvider(args.First()));
+                case 25:
+                    return new Day25Solver(new Day25PointFileReaderDataProvider(args.First()));
                 default:
                     return null;
             }
