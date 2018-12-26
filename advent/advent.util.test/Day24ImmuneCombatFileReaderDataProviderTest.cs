@@ -12,37 +12,33 @@ namespace advent.util.test
         {
             const string filename = "data\\day24_immune_combat.txt";
             var dataProdiver = new Day24ImmuneCombatFileReaderDataProvider(filename);
-            var expectedImmuneSystems = new List<Day24Solver.Group>
+            var expectedGroups = new List<Day24Solver.Group>
             {
-                new Day24Solver.Group(17, 5390, 4507, "fire", 2),
-                new Day24Solver.Group(989, 1274, 25, "slashing", 3)
+                new Day24Solver.Group(Day24Solver.Group.GroupType.ImmuneSystem, 17, 5390, 4507, "fire", 2),
+                new Day24Solver.Group(Day24Solver.Group.GroupType.ImmuneSystem, 989, 1274, 25, "slashing", 3),
+                new Day24Solver.Group(Day24Solver.Group.GroupType.Infection, 801, 4706, 116, "bludgeoning", 1),
+                new Day24Solver.Group(Day24Solver.Group.GroupType.Infection, 4485, 2961, 12, "slashing", 4)
             };
-            expectedImmuneSystems[0].Weaknesses.Add("radiation");
-            expectedImmuneSystems[0].Weaknesses.Add("bludgeoning");
-            expectedImmuneSystems[1].Immunities.Add("fire");
-            expectedImmuneSystems[1].Weaknesses.Add("bludgeoning");
-            expectedImmuneSystems[1].Weaknesses.Add("slashing");
-            var expectedInfections = new List<Day24Solver.Group>
-            {
-                new Day24Solver.Group(801, 4706, 116, "bludgeoning", 1),
-                new Day24Solver.Group(4485, 2961, 12, "slashing", 4)
-            };
-            expectedInfections[0].Weaknesses.Add("radiation");
-            expectedInfections[1].Immunities.Add("radiation");
-            expectedInfections[1].Weaknesses.Add("fire");
-            expectedInfections[1].Weaknesses.Add("cold");
+            expectedGroups[0].Weaknesses.Add("radiation");
+            expectedGroups[0].Weaknesses.Add("bludgeoning");
+            expectedGroups[1].Immunities.Add("fire");
+            expectedGroups[1].Weaknesses.Add("bludgeoning");
+            expectedGroups[1].Weaknesses.Add("slashing");
+            expectedGroups[3].Immunities.Add("radiation");
+            expectedGroups[3].Weaknesses.Add("fire");
+            expectedGroups[3].Weaknesses.Add("cold");
 
             var combat = dataProdiver.GetData();
-            Assert.Equal(expectedImmuneSystems, combat.ImmuneSystems, new GroupComparer());
-            Assert.Equal(expectedInfections, combat.Infections, new GroupComparer());
+            Assert.Equal(expectedGroups, combat.Groups, new GroupComparer());
         }
         
         private class GroupComparer : IEqualityComparer<Day24Solver.Group>
         {
             public bool Equals(Day24Solver.Group x, Day24Solver.Group y)
             {
-                return x.Units == y.Units &&
-                       x.HP == y.HP &&
+                return x.Type == y.Type &&
+                       x.Units == y.Units &&
+                       x.HitPoints == y.HitPoints &&
                        x.Damage == y.Damage &&
                        x.DamageType == y.DamageType &&
                        x.Initiative == y.Initiative &&

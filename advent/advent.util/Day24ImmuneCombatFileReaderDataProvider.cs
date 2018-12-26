@@ -8,55 +8,66 @@ namespace advent.util
     {
         private readonly string filename;
 
-        private readonly Regex groupParsingRegex;
+        private readonly Regex groupWithWeaknessImmunityParsingRegex;
+        private readonly Regex groupWithoutWeaknessImmunityParsinRegex;
         private const string ImmuneSystemStart = "Immune System:";
         private const string InfectionStart = "Infection:";
 
         public Day24ImmuneCombatFileReaderDataProvider(string filename)
         {
             this.filename = filename;
-            groupParsingRegex = new Regex("^(\\d+) units each with (\\d+) hit points \\((.*)\\) with an attack that does (\\d+) (\\w+) damage at initiative (\\d+)$");
+            groupWithWeaknessImmunityParsingRegex =
+                new Regex(
+                    "^(\\d+) units each with (\\d+) hit points \\((.*)\\) with an attack that does (\\d+) (\\w+) damage at initiative (\\d+)$");
+            groupWithoutWeaknessImmunityParsinRegex = new Regex(
+                "^(\\d+) units each with (\\d+) hit points with an attack that does (\\d+) (\\w+) damage at initiative (\\d+)$");
         }
 
         public Day24Solver.ImmuneCombat GetData()
         {
             var lines = File.ReadAllLines(filename);
             var combat = new Day24Solver.ImmuneCombat();
-            var isImmuneSystem = true;
+            var groupType = Day24Solver.Group.GroupType.ImmuneSystem;
             foreach (var line in lines)
             {
                 if (string.IsNullOrEmpty(line)) continue;
-                
+
                 if (line == ImmuneSystemStart)
                 {
-                    isImmuneSystem = true;
+                    groupType = Day24Solver.Group.GroupType.ImmuneSystem;
                     continue;
                 }
 
                 if (line == InfectionStart)
                 {
-                    isImmuneSystem = false;
+                    groupType = Day24Solver.Group.GroupType.Infection;
                     continue;
                 }
 
-                var group = ParseGroup(line);
-                if (isImmuneSystem) combat.ImmuneSystems.Add(group);
-                else combat.Infections.Add(group);
+                combat.Groups.Add(ParseGroup(line, groupType));
             }
 
             return combat;
         }
 
-        private Day24Solver.Group ParseGroup(string line)
+        private Day24Solver.Group ParseGroup(string line, Day24Solver.Group.GroupType groupType)
         {
-            var match = groupParsingRegex.Match(line);
+            var match = groupWithWeaknessImmunityParsingRegex.Match(line);
+            if (match.Success) return ParseGroupWithWeaknessImmunities(match, groupType);
+
+            match = groupWithoutWeaknessImmunityParsinRegex.Match(line);
+            return ParseGroupWithoutWeaknessImmunities(match, groupType);
+        }
+
+        private static Day24Solver.Group ParseGroupWithWeaknessImmunities(Match match, Day24Solver.Group.GroupType type)
+        {
             var units = int.Parse(match.Groups[1].Value);
-            var hp = int.Parse(match.Groups[2].Value);
+            var hitPoints = int.Parse(match.Groups[2].Value);
             var weaknessesAndImmunities = match.Groups[3].Value;
             var damage = int.Parse(match.Groups[4].Value);
             var damageType = match.Groups[5].Value;
             var initiative = int.Parse(match.Groups[6].Value);
-            var group = new Day24Solver.Group(units, hp, damage, damageType, initiative);
+            var group = new Day24Solver.Group(type, units, hitPoints, damage, damageType, initiative);
             ParseWeaknessesAndImmunities(group, weaknessesAndImmunities);
             return group;
         }
@@ -79,6 +90,17 @@ namespace advent.util
                     foreach (var immunity in immunities) group.Immunities.Add(immunity);
                 }
             }
+        }
+
+        private static Day24Solver.Group ParseGroupWithoutWeaknessImmunities(Match match,
+            Day24Solver.Group.GroupType type)
+        {
+            var units = int.Parse(match.Groups[1].Value);
+            var hitPoints = int.Parse(match.Groups[2].Value);
+            var damage = int.Parse(match.Groups[3].Value);
+            var damageType = match.Groups[4].Value;
+            var initiative = int.Parse(match.Groups[5].Value);
+            return new Day24Solver.Group(type, units, hitPoints, damage, damageType, initiative);
         }
     }
 }
