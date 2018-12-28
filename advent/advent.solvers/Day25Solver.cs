@@ -57,7 +57,7 @@ namespace advent.solvers
 
         public string SolveSecondPart()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         private class Constellation
