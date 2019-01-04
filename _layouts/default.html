@@ -1,20 +1,87 @@
 <!DOCTYPE html>
-<html>
+<!--suppress HtmlUnknownTarget -->
+{% assign stylesheet_url = "/css/main.css" | prepend: site.baseurl %}
+{% assign alternate_url = "/feed.xml" | prepend: site.baseurl | prepend: site.url %}
+{% assign description = {% if page.excerpt %}page.excerpt | strip_html | strip_newlines | truncate: 160{% else %}site.description{% endif %} %}
+<html lang="{{page.lang}}">
+<head>
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{description}}">
+    <link rel="stylesheet" href="{{ stylesheet_url }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ alternate_url }}">
+</head>
+<body>
+<header class="site-header">
+    <div class="wrapper">
+        {% if page.lang == "en" %}
+        <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+        {% else %}
+        <a class="site-title" href="{{ site.baseurl }}/index.fr.html">{{ site.title }}</a>
+        {% endif %}
+        <nav class="site-nav">
+            <div class="trigger">
+                {% assign pages = site.pages | where: "lang", page.lang %}
+                {% for p in pages %}
+                {% if p.title %}
+                <a class="page-link" href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a>
+                {% endif %}
+                {% endfor %}
 
-  {% include head.html %}
+                {% assign posts = site.posts | where: "ref", page.ref | sort: "lang" %}
+                {% for p in posts %}
+                {% if p.lang != page.lang %}
+                <a href="{{ p.url | prepend: site.baseurl }}" class="{{ p.lang }} page-link">{{ p.lang }}</a>
+                {% endif %}
+                {% endfor %}
 
-  <body>
-
-    {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrapper page-content-wrapper">
-        {{ content }}
-      </div>
+                {% assign pages = site.pages | where: "ref", page.ref | sort: "lang" %}
+                {% for p in pages %}
+                {% if p.lang != page.lang %}
+                <a href="{{ p.url | prepend: site.baseurl }}" class="{{ p.lang }} page-link">{{ p.lang }}</a>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </nav>
     </div>
-
-    {% include footer.html %}
-
-  </body>
-
+</header>
+<div class="page-content">
+    <div class="wrapper page-content-wrapper">
+        {{ content }}
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="wrapper">
+        <div class="footer-col-wrapper">
+            <div class="col-md-6">
+                <ul class="contact-list">
+                    <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+                    {% if site.github_username %}
+                    <li>
+                        <a href="https://github.com/{{ site.github_username }}">
+                            <span class="icon icon--github">{% include icon-github.svg %}</span>
+                            <span class="username">{{ site.github_username }}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if site.twitter_username %}
+                    <li>
+                        <a href="https://twitter.com/{{ site.twitter_username }}">
+                            <span class="icon icon--twitter">{% include icon-twitter.svg %}</span>
+                            <span class="username">{{ site.twitter_username }}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <p class="description">{{ site.description }}</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
 </html>
