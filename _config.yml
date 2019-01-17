@@ -1,11 +1,12 @@
 title: Proper Code
 email: lavoiecsh@gmail.com
 description: >
-  A blog about programming<br/>
-  Un blog à propos de la programmation<br/>
-  Sébastien Lavoie-Courchesne
+  A blog about programming by Sébastien Lavoie-Courchesne//
+  Un blog à propos de la programmation par Sébastien Lavoie-Courchesne
 baseurl: ''
 url: http://lavoiecsh.github.io/
-twitter_username: 
+twitter_username:
 github_username:  lavoiecsh
 markdown: kramdown
+sass:
+  sass_dir: css
