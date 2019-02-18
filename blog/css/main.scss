@@ -1,0 +1,142 @@
+---
+
+#
+---
+
+//noinspection CssInvalidCharsetRule
+@charset "utf-8";
+
+$brand-color: #08f;
+$menu-background-color: #C0C0C0;
+$menu-foreground-color: #202020;
+$content-background-color: #E0E0E0;
+$content-foreground-color: #202020;
+
+@mixin small-screen() {
+    @media screen and (max-width: 960px) {
+        @content;
+    }
+}
+
+body {
+    margin: 0;
+    background-color: $menu-background-color;
+    color: $menu-foreground-color;
+}
+
+a {
+    color: $brand-color;
+    text-decoration: none;
+
+    &:visited {
+        color: darken($brand-color, 25%);
+    }
+
+    &:hover {
+        color: lighten($brand-color, 25%);
+        text-decoration: underline;
+    }
+}
+
+.icon {
+    > svg {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+
+        path {
+            fill: #828282;
+        }
+    }
+}
+
+.title {
+    grid-area: title;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+
+    .site-title {
+        font-family: "Source Serif Pro", serif;
+        font-size: 32px;
+
+        :hover {
+            text-decoration: underline;
+        }
+
+        img {
+            width: 32px;
+            height: 32px;
+            vertical-align: text-bottom;
+        }
+    }
+}
+
+.nav {
+    grid-area: nav;
+    font-size: 24px;
+    padding: 8px;
+
+    ul {
+        padding-left: 16px;
+
+        li {
+            display: block;
+        }
+    }
+}
+
+.other-languages {
+    grid-area: languages;
+    font-size: 20px;
+    padding: 8px;
+}
+
+.content {
+    grid-area: content;
+    font-size: 20px;
+    background-color: $content-background-color;
+    color: $content-foreground-color;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    text-align: justify;
+
+    .content-max {
+        max-width: 1024px;
+    }
+}
+
+.contacts {
+    grid-area: contact;
+    font-size: 20px;
+    padding: 8px;
+
+    ul {
+        padding-left: 0;
+
+        li {
+            display: block;
+        }
+    }
+}
+
+.rss-feed {
+    grid-area: rss;
+    font-size: 20px;
+    padding: 8px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 256px auto;
+    grid-template-areas: 'title content' 'nav content' 'languages content' 'rss content' 'contact content' '. content';
+}
+
+@include small-screen() {
+    .grid-container {
+        grid-template-columns: auto auto;
+        grid-template-areas: 'title' 'languages' 'content' 'nav' 'rss' 'contact';
+    }
+}
