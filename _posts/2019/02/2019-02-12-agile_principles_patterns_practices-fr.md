@@ -4,8 +4,8 @@ title: "Revue de livre: Agile Principles, Patterns, and Practices in C#"
 lang: fr
 ref: agile_principles_practices_patterns
 date: 2019-02-12
-categories: [reviews]
-tags: [reviews]
+categories: [Revue]
+tags: []
 ---
 Ceci est le premier livre que j'ai lu depuis que j'ai quitté l'université. Il m'a été proposé lorsque j'ai joint la compagnie à laquelle je travaille présentement et c'est une de mes inspirations pour la façon que je travaille et ce blog.
 

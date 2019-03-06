@@ -4,8 +4,8 @@ title: "Mise à jour sur la disposition"
 lang: fr
 ref: layout_update
 date: 2019-01-17 17:57:00 -0400
-categories: [update]
-tags: [update]
+categories: [Mise-à-jour]
+tags: []
 ---
 J'ai récemment décidé de mettre à jour mon site web et j'ai profité de cette occasion pour apprendre une nouvelle (quoique vieille) technologie: CSS Grid.
 

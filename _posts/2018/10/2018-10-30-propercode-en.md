@@ -4,8 +4,8 @@ title: "Proper Code"
 lang: en
 ref: propercode
 date: 2018-10-30 9:00:00 -0400
-categories: [update]
-tags: [update]
+categories: [Update]
+tags: []
 ---
 I started my programming career in a large waterfall company working on their C++ software. We had multiple layers of analysis documents describing what should be done to implement each feature. We had no unit tests. The software was so large the current version of Visual Studio couldn't handle it all. It took so much time to compile (over six hours to compile everything) that we were doing partial compilations refering to a nightly build and it still took over an hour to build if you had enough code modified. Launching the software to test your features often took over 5 minutes. We were working on two different features at the same time because of all the waiting and you worked on your features alone for weeks if not months at a time. The company was hiring developpers by batches of 20 to 30 and giving them two weeks of classes when they started. Refactoring was pretty much out of the question because we couldn't deliver features fast enough.
 

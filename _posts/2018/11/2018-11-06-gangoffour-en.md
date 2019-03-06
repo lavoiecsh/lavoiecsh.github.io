@@ -4,8 +4,8 @@ title: "Book Review: Gang of Four"
 lang: en
 ref: gangoffour
 date: 2018-11-06 9:00:00 -0400
-categories: [reviews]
-tags: [reviews]
+categories: [Review]
+tags: []
 ---
 I'm starting this book review series with the infamous book about design patterns. For those who don't know which book I'm talking about: *Design Patterns: Elements of Reusable Object-Oriented Software*, written by Erich Gamma, John Vlissides, Ralph Johnson, and Richard Helm.
 

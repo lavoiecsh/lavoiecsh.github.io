@@ -4,8 +4,8 @@ title: "Proper Code"
 lang: fr
 ref: propercode
 date: 2018-10-30 9:00:00 -0400
-categories: [update]
-tags: [update]
+categories: [Mise-à-jour]
+tags: []
 ---
 J'ai commencé ma carrière de développement dans une grande entreprise en cascade à travailler sur leur logiciel en C++. Nous avions plusieurs couches de documents d'analyse décrivant le travail à effectuer pour implémenter chacune des fonctionnalités. Il n'y avait pas de tests. Le logiciel était si massif que la version actuelle de Visual Studio ne pouvait pas le supporter. La compilation prenait tellement de temps (plus de six heures pour compiler le système complet) que nous avions des compilations partielles qui référaient à une compilation de nuit et c'était assez fréquent d'avoir des compilations de plus d'une heure malgré celà. Lancer le logiciel pour tester les fonctionnalités prenait souvent plus de 5 minutes. Il fallait souvent travailler sur deux fonctionnalités en parallèle parce que nous étions toujours en train d'attendre et nous travaillions généralement seul sur une fonctionnalité pour des semaines et parfois des mois de temps. La compagnie engageaient des développeurs par cohortes de 20 à 30 et leur donnaient deux semaines de cours en partant. Le *refactoring* était hors de question parce que nous ne pouvions pas livrer les fonctionnalités assez vite.
 

@@ -4,8 +4,8 @@ title: "Critique de livre: Gang of Four"
 lang: fr
 ref: gangoffour
 date: 2018-11-06 9:00:00 -0400
-categories: [reviews]
-tags: [reviews]
+categories: [Revue]
+tags: []
 ---
 Je commence cette série de revue de livres par le fameux livre à propos des patrons de conception. Pour ceux qui ne savent pas de quel livre je parle: *Design Patterns: Elements of Reusable Object-Oriented Software*, écrit par Erich Gamma, John Vlissides, Ralph Johnson, et Richard Helm.
 

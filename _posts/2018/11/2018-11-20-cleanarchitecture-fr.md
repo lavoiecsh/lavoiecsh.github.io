@@ -4,8 +4,8 @@ title: "Revue de livre: Clean Architecture"
 lang: fr
 ref: cleanarchitecture
 date: 2018-11-20 9:00:00 -0400
-categories: [reviews]
-tags: [reviews]
+categories: [Revue]
+tags: []
 ---
 Le prochain livre dans la série des revues: *Clean Architecture: A Craftsman's Guide to Software Structure and Design* par Robert Martin. Malgré le fait que j'ai aimé beaucoup de ces autres livres, je dois admettre que je suis déçu de celui-ci et je vais donner les raisons dans cette revue.
 

@@ -4,8 +4,8 @@ title: "Book Review: Agile Principles, Patterns, and Practices in C#"
 lang: en
 ref: agile_principles_practices_patterns
 date: 2019-02-12
-categories: [reviews]
-tags: [reviews]
+categories: [Review]
+tags: []
 ---
 This is the first book I have read since university. It was proposed to me not long after I joined the company I currently work at and is one of the inspirations for the way I work and this blog.
 

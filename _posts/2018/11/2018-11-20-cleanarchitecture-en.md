@@ -4,8 +4,8 @@ title: "Book Review: Clean Architecture"
 lang: en
 ref: cleanarchitecture
 date: 2018-11-20 9:00:00 -0400
-categories: [reviews]
-tags: [reviews]
+categories: [Review]
+tags: []
 ---
 Next up in the book review series: *Clean Architecture: A Craftsman's Guide to Software Structure and Design* by Robert Martin. Although I've loved a lot of the other books by Uncle Bob, I have to admit this one disappointed me and I'll explain why in this book review.
 

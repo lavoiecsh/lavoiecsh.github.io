@@ -106,6 +106,17 @@ a {
     .content-max {
         max-width: 1024px;
     }
+
+    ul.page-list {
+        li {
+            display: inline;
+        }
+
+        li.current-page button {
+            color: $content-background-color;
+            background-color: $content-foreground-color;
+        }
+    }
 }
 
 .contacts {

@@ -4,8 +4,8 @@ title: Introduction
 lang: en
 ref: introduction
 date: 2018-09-20 9:00:00 -0400
-categories: [update]
-tags: [update]
+categories: [Update]
+tags: []
 ---
 Welcome to my blog.
 

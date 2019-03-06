@@ -4,8 +4,8 @@ title: "Layout Update"
 lang: en
 ref: layout_update
 date: 2019-01-17 17:57:00 -0400
-categories: [update]
-tags: [update]
+categories: [Update]
+tags: []
 ---
 I recently decided to update my website and used this opportunity to learn a new (though old) technology: CSS Grid.
 

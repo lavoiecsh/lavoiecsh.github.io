@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-{% assign stylesheet_url = "/css/main.css" | relative_url %}
-{% assign feed_url = "/feed.xml" | relative_url %}
-{% assign icon_url = "/favicon.ico" | relative_url %}
-
 {% if page.excerpt %}
 {% assign description = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
 {% else %}
@@ -10,7 +6,7 @@
 {% endif %}
 
 {% if page.lang == "en" %}
-{% assign main_url = site.baseurl %}
+{% assign main_url = "/index.html" | relative_url %}
 {% else %}
 {% assign main_url = "/index.fr.html" | relative_url %}
 {% endif %}
@@ -21,15 +17,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ description }}">
-    <link rel="stylesheet" href="{{ stylesheet_url }}">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript" src="/js/categorizer.js"></script>
+    <script type="text/javascript" src="/js/paginator.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ feed_url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
 </head>
 <body>
 <div class="grid-container">
     <div class="title">
         <a class="site-title" href="{{ main_url }}/">
-            <img src="{{ icon_url }}" alt="Proper Code"/>
+            <img src="/favicon.ico" alt="Proper Code"/>
             {{ site.title }}
         </a>
     </div>
@@ -47,10 +46,11 @@
             <p class="pages">Posts by category</p>
             <ul class="pages">
                 {% assign categories = site.posts | where: "lang", page.lang | group_by: "categories" | sort: "name" %}
-                {% for c in categories %}
+                {% for category in categories %}
+                {% assign name = category.name | strip | remove: '"' | remove: "[" | remove: "]" %}
                 <li>
-                    <a class="page-link" href="{{ main_url }}">
-                        {{ c.name | strip | remove: '"' | remove: "[" | remove: "]" }}
+                    <a class="page-link" href="{{ main_url | append: "?category=" | append: name }}">
+                        {{ name }}
                     </a>
                 </li>
                 {% endfor %}
@@ -97,9 +97,9 @@
     </div>
     <div class="rss-feed">
         {% if page.lang == "en" %}
-        <a href="{{ feed_url }}">Subscribe via RSS</a>
+        <a href="/feed.xml">Subscribe via RSS</a>
         {% else %}
-        <a href="{{ feed_url }}">Souscrire via RSS</a>
+        <a href="/feed.xml">Souscrire via RSS</a>
         {% endif %}
     </div>
 </div>
