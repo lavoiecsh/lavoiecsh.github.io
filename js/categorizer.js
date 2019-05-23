@@ -16,6 +16,6 @@ class Categorizer {
             .substr(1)
             .split('&')
             .map(v => v.split('='));
-        return new Map(categories).get('category');
+        return decodeURIComponent(new Map(categories).get('category'));
     }
 }
