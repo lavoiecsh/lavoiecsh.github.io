@@ -16,6 +16,7 @@ class Categorizer {
             .substr(1)
             .split('&')
             .map(v => v.split('='));
-        return decodeURIComponent(new Map(categories).get('category'));
+        let category = new Map(categories).get('category');
+        return category === undefined ? undefined : decodeURIComponent(category);
     }
 }
