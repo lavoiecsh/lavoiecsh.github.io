@@ -1,3 +1,12 @@
+---
+layout: post
+title: "Thinking in resolvers"
+lang: en
+ref: thinking-in-resolvers
+date: 2020-10-15
+categories: [Technologies]
+tags: []
+---
 # Thinking in Resolvers
 
 Everything in GraphQL revolves around resolvers. It's important to understand this to better develop application exposing GraphQL APIs.
