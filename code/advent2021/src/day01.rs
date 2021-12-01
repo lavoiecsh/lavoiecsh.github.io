@@ -5,7 +5,12 @@ use std::fs;
 
 #[allow(dead_code)]
 fn read_input() -> Vec<usize> {
-    fs::read_to_string("inputs/day01.txt").expect("error reading").trim().split("\n").map(|s|s.parse().expect("error parsing")).collect()
+    fs::read_to_string("inputs/day01.txt")
+        .expect("error reading")
+        .trim()
+        .split("\n")
+        .map(|s|s.parse().expect("error parsing"))
+        .collect()
 }
 
 #[allow(dead_code)]
