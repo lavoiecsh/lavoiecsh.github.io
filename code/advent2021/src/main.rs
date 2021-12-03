@@ -3,9 +3,10 @@ use std::time::SystemTime;
 mod day00;
 mod day01;
 mod day02;
+mod day03;
 
 #[allow(unused_imports)]
-use day02::{part1,part2};
+use day03::{part1,part2};
 
 fn main() {
     println!("\nExecution Starting\n");
