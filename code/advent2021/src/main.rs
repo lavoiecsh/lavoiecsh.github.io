@@ -6,7 +6,7 @@ mod day02;
 mod day03;
 
 #[allow(unused_imports)]
-use day03::{part1,part2};
+use day01::{part1,part2};
 
 fn main() {
     println!("\nExecution Starting\n");

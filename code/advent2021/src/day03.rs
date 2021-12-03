@@ -3,34 +3,27 @@
 
 use std::fs;
 
-const SIZE: u32 = 12;
-
 #[allow(dead_code)]
-fn read_input() -> Vec<Vec<char>>{ 
+fn read_input() -> Vec<usize>{ 
     fs::read_to_string("inputs/day03.txt").expect("error reading")
         .trim()
         .lines()
-        .map(|s|s.chars().collect())
+        .map(|s|usize::from_str_radix(s, 2).unwrap())
         .collect()
 }
 
 #[allow(dead_code)]
 pub fn part1() -> usize {
     let numbers = read_input();
-    let mut power: usize = usize::pow(2, SIZE-1);
+    let mut power = find_power(&numbers);
     let mut gamma: usize = 0;
     let mut epsilon: usize = 0;
-    for i in 0..SIZE as usize {
-        let mut count0: usize = 0;
-        for n in &numbers {
-            if n[i] == '0' {
-                count0 += 1;
-            }
-        }
-        if count0 > numbers.len()/2 {
-            epsilon += power;
-        } else {
+    while power > 0 {
+        let c1 = count1(&numbers, power);
+        if c1 > numbers.len()/2 {
             gamma += power;
+        } else {
+            epsilon += power;
         }
         power /= 2;
     }
@@ -40,64 +33,38 @@ pub fn part1() -> usize {
 #[allow(dead_code)]
 pub fn part2() -> usize {
     let numbers = read_input();
-    let oxygen: usize = find_oxygen(&numbers);
-    let co2: usize = find_co2(&numbers);
+    let power = find_power(&numbers);
+    let oxygen = find_rating(&numbers, power, |c0,c1| c0 > c1);
+    let co2 = find_rating(&numbers, power, |c0,c1| c0 <= c1);
     debug!(oxygen);
     debug!(co2);
     oxygen * co2
 }
 
-fn find_oxygen(start: &Vec<Vec<char>>) -> usize {
-    let mut numbers: Vec<Vec<char>> = start.iter().map(|n|n.to_vec()).collect();
-    for i in 0..SIZE as usize {
+fn find_rating(start_numbers: &Vec<usize>, start_power: usize, use0: fn (c0: usize, c1: usize) -> bool) -> usize {
+    let mut numbers: Vec<usize> = start_numbers.to_vec();
+    let mut power = start_power;
+    while power > 0 {
         if numbers.len() == 1 {
-            return unbinary(&numbers[0]);
+            return numbers[0];
         }
-        let c0 = count0(&numbers, i);
-        let c1 = numbers.len() - c0;
-        if c0 > c1 {
-            numbers = numbers.iter().filter(|n|n[i] == '0').map(|n|n.to_vec()).collect();
-        } else {
-            numbers = numbers.iter().filter(|n|n[i] == '1').map(|n|n.to_vec()).collect();
-        }
-    }
-    assert!(numbers.len() == 1);
-    unbinary(&numbers[0])
-}
-
-fn find_co2(start: &Vec<Vec<char>>) -> usize {
-    let mut numbers: Vec<Vec<char>> = start.iter().map(|n|n.to_vec()).collect();
-    for i in 0..SIZE as usize {
-        debug!(numbers.len());
-        if numbers.len() == 1 {
-            return unbinary(&numbers[0]);
-        }
-        let c0 = count0(&numbers, i);
-        let c1 = numbers.len() - c0;
-        debug!(c0);
-        debug!(c1);
-        if c0 <= c1 {
-            numbers = numbers.iter().filter(|n|n[i] == '0').map(|n|n.to_vec()).collect();
-        } else {
-            numbers = numbers.iter().filter(|n|n[i] == '1').map(|n|n.to_vec()).collect();
-        }
-    }
-    assert!(numbers.len() == 1);
-    unbinary(&numbers[0])
-}
-
-fn unbinary(n: &Vec<char>) -> usize {
-    let mut b: usize = 0;
-    let mut power: usize = usize::pow(2, SIZE-1);
-    for i in 0..SIZE as usize {
-        if n[i] == '1' {
-            b += power;
-        }
+        let c1 = count1(&numbers, power);
+        let c0 = numbers.len() - c1;
+        let x = if use0(c0, c1) { 0 } else { power };
+        numbers = numbers.iter().cloned().filter(|n| n & power == x).collect();
         power /= 2;
     }
-    b
+    assert!(numbers.len() == 1);
+    numbers[0]
 }
 
-fn count0(numbers: &Vec<Vec<char>>, i: usize) -> usize {
-    numbers.iter().fold(0, |acc,n| if n[i] == '0' { acc + 1 } else { acc })
+fn find_power(numbers: &Vec<usize>) -> usize {
+    let largest = numbers.iter().cloned().fold(0, usize::max);
+    let mut power = 1;
+    while power < largest { power *= 2 };
+    power / 2
+}
+
+fn count1(numbers: &Vec<usize>, power: usize) -> usize {
+    numbers.iter().fold(0, |acc,n| acc + if n & power != 0 { 1 } else { 0 })
 }

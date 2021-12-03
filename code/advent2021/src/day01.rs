@@ -8,7 +8,7 @@ fn read_input() -> Vec<usize> {
     fs::read_to_string("inputs/day01.txt")
         .expect("error reading")
         .trim()
-        .split("\n")
+        .lines()
         .map(|s|s.parse().expect("error parsing"))
         .collect()
 }

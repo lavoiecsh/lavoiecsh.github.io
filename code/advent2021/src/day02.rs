@@ -3,14 +3,8 @@
 
 use std::fs;
 
-enum Direction {
-    Forward,
-    Down,
-    Up
-}
-
 struct Command {
-    direction: Direction,
+    direction: char,
     units: usize,
 }
 
@@ -18,21 +12,16 @@ struct Command {
 fn read_input() -> Vec<Command> {
     fs::read_to_string("inputs/day02.txt").expect("error reading")
         .trim()
-        .split("\n")
+        .lines()
         .map(parse_line)
         .collect()
 }
 
 fn parse_line(input: &str) -> Command {
     let mut sections = input.split(" ");
-    let dir = sections.next().unwrap();
+    let dir = sections.next().unwrap().chars().next().unwrap();
     let units = sections.next().unwrap().parse().expect("error parsing");
-    match dir {
-        "forward" => Command { direction: Direction::Forward, units: units },
-        "down" => Command { direction: Direction::Down, units: units },
-        "up" => Command { direction: Direction::Up, units: units },
-        _ => panic!("not found")
-    }
+    Command { direction: dir, units: units }
 }
 
 #[allow(dead_code)]
@@ -42,9 +31,10 @@ pub fn part1() -> usize {
     let mut depth: usize = 0;
     for command in commands {
         match command.direction {
-            Direction::Forward => pos += command.units,
-            Direction::Down => depth += command.units,
-            Direction::Up => depth -= command.units,
+            'f' => pos += command.units,
+            'd' => depth += command.units,
+            'u' => depth -= command.units,
+            _ => panic!("unknown direction")
         }
     }
     pos * depth
@@ -58,12 +48,13 @@ pub fn part2() -> usize {
     let mut aim: usize = 0;
     for command in commands {
         match command.direction {
-            Direction::Down => aim += command.units,
-            Direction::Up => aim -= command.units,
-            Direction:: Forward => {
+            'd' => aim += command.units,
+            'u' => aim -= command.units,
+            'f' => {
                 pos += command.units;
                 depth += aim * command.units;
             }
+            _ => panic!("unknown direction")
         }
     }
     pos * depth
