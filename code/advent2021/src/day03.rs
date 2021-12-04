@@ -3,9 +3,11 @@
 
 use std::fs;
 
+const FILENAME: &str = "inputs/day03.txt";
+
 #[allow(dead_code)]
 fn read_input() -> Vec<usize>{ 
-    fs::read_to_string("inputs/day03.txt").expect("error reading")
+    fs::read_to_string(FILENAME).expect("error reading")
         .trim()
         .lines()
         .map(|s|usize::from_str_radix(s, 2).unwrap())

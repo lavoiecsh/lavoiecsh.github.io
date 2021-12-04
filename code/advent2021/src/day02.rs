@@ -3,6 +3,8 @@
 
 use std::fs;
 
+const FILENAME: &str = "inputs/day02.txt";
+
 struct Command {
     direction: char,
     units: usize,
@@ -10,7 +12,7 @@ struct Command {
 
 #[allow(dead_code)]
 fn read_input() -> Vec<Command> {
-    fs::read_to_string("inputs/day02.txt").expect("error reading")
+    fs::read_to_string(FILENAME).expect("error reading")
         .trim()
         .lines()
         .map(parse_line)

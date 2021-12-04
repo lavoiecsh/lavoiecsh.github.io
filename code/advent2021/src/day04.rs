@@ -3,6 +3,8 @@
 
 use std::fs;
 
+const FILENAME: &str = "inputs/day04.txt";
+
 #[derive(Clone)]
 struct Tile {
     number: usize,
@@ -13,7 +15,7 @@ type Board = Vec<Tile>;
 
 #[allow(dead_code)]
 fn read_input() -> (Vec<usize>, Vec<Board>) {
-    let txt = fs::read_to_string("inputs/day04.txt").expect("error reading");
+    let txt = fs::read_to_string(FILENAME).expect("error reading");
     let mut lines = txt.trim().lines();
     
     let numbers: Vec<usize> = lines.next().unwrap().trim().split(",").map(|n|n.parse().expect("error parsing")).collect();

@@ -3,9 +3,11 @@
 
 use std::fs;
 
+const FILENAME: &str = "inputs/day00.txt";
+
 #[allow(dead_code)]
 fn read_input() -> String {
-    fs::read_to_string("inputs/day00.txt").expect("error reading")
+    fs::read_to_string(FILENAME).expect("error reading")
 }
 
 #[allow(dead_code)]
