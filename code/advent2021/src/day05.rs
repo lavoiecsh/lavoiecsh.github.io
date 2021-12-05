@@ -76,45 +76,23 @@ pub fn part2() -> usize {
                 grid.insert(pos, grid.get(&pos).unwrap_or(&0) + 1);
             }
         } else {
-            let mut x = s.x1;
-            let mut y = s.y1;
-            if s.x1 < s.x2 {
-                if s.y1 < s.y2 {
-                    while x <= s.x2 {
-                        let pos = (x, y);
-                        grid.insert(pos, grid.get(&pos).unwrap_or(&0) + 1);
-                        x += 1;
-                        y += 1;
-                    }
-                } else {
-                    while x <= s.x2 {
-                        let pos = (x, y);
-                        grid.insert(pos, grid.get(&pos).unwrap_or(&0) + 1);
-                        x += 1;
-                        y -= 1;
-                    }
+            if (s.x1 < s.x2 && s.y1 < s.y2) || (s.x1 > s.x2 && s.y1 > s.y2) {
+                let mut x = min(s.x1, s.x2);
+                let mut y = min(s.y1, s.y2);
+                while x <= max(s.x1, s.x2) {
+                    let pos = (x, y);
+                    grid.insert(pos, grid.get(&pos).unwrap_or(&0) + 1);
+                    x += 1;
+                    y += 1;
                 }
             } else {
-                if s.y1 < s.y2 {
-                    debug!(s.x2);
-                    while x > s.x2 {
-                        debug!(x);
-                        let pos = (x, y);
-                        grid.insert(pos, grid.get(&pos).unwrap_or(&0) + 1);
-                        x -= 1;
-                        y += 1;
-                    }
+                let mut x = min(s.x1, s.x2);
+                let mut y = max(s.y1, s.y2);
+                while x <= max(s.x1, s.x2) {
                     let pos = (x, y);
                     grid.insert(pos, grid.get(&pos).unwrap_or(&0) + 1);
-                } else {
-                    while x > s.x2 {
-                        let pos = (x, y);
-                        grid.insert(pos, grid.get(&pos).unwrap_or(&0) + 1);
-                        x -= 1;
-                        y -= 1;
-                    }
-                    let pos = (x, y);
-                    grid.insert(pos, grid.get(&pos).unwrap_or(&0) + 1);
+                    x += 1;
+                    y -= 1;
                 }
             }
         }
