@@ -68,42 +68,34 @@ fn is_low_point(heightmap: &Vec<Vec<char>>, imax: usize, jmax: usize, i: usize, 
 }
 
 fn find_basin(heightmap: &Vec<Vec<char>>, imax: usize, jmax: usize, i: usize, j: usize) -> usize {
-    let mut marked: Vec<(usize, usize)> = Vec::new();
-    marked.push((i, j));
-    find_basin_rec(heightmap, imax, jmax, &mut marked);
-
+    let mut marked: Vec<(usize, usize)> = vec![(i,j)];
+    let mut added: bool = true;
+    while added {
+        added = false;
+        for (i,j) in marked.to_vec() {
+            let current = heightmap[i][j];
+            if i > 0 && is_in_basin(&heightmap, current, i-1, j, &marked) {
+                marked.push((i-1,j));
+                added = true;
+            }
+            if i < imax-1 && is_in_basin(&heightmap, current, i+1, j, &marked) {
+                marked.push((i+1, j));
+                added = true;
+            }
+            if j > 0 && is_in_basin(&heightmap, current, i, j-1, &marked) {
+                marked.push((i, j-1));
+                added = true;
+            }
+            if j < jmax-1 && is_in_basin(&heightmap, current, i, j+1, &marked) {
+                marked.push((i, j+1));
+                added = true;
+            }
+        }
+    }
     marked.len()
 }
 
-fn find_basin_rec(heightmap: &Vec<Vec<char>>, imax: usize, jmax: usize, marked: &mut Vec<(usize, usize)>) {
-    let mut added: bool = false;
-    for (i,j) in marked.to_vec() {
-        let current = heightmap[i][j];
-        if i > 0 && is_in_basin(&heightmap, current, i-1, j, marked) {
-            marked.push((i-1,j));
-            added = true;
-        }
-        if i < imax-1 && is_in_basin(&heightmap, current, i+1, j, marked) {
-            marked.push((i+1, j));
-            added = true;
-        }
-        if j > 0 && is_in_basin(&heightmap, current, i, j-1, marked) {
-            marked.push((i, j-1));
-            added = true;
-        }
-        if j < jmax-1 && is_in_basin(&heightmap, current, i, j+1, marked) {
-            marked.push((i, j+1));
-            added = true;
-        }
-    }
-    if debug!(added) {
-        debug!(marked.len());
-        find_basin_rec(heightmap, imax, jmax, marked);
-    }
-}
-
 fn is_in_basin(heightmap: &Vec<Vec<char>>, current: char, i: usize, j: usize, marked: &Vec<(usize, usize)>) -> bool {
-    !marked.contains(&(i,j)) &&
-        heightmap[i][j] > current &&
-        heightmap[i][j] != '9'
+    let check = heightmap[i][j];
+    !marked.contains(&(i,j)) && check != '9' && check > current
 }
