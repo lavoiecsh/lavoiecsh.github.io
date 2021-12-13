@@ -7,31 +7,30 @@ use std::collections::HashMap;
 
 const FILENAME: &str = "inputs/day12.txt";
 
-struct Cave {
-    adjacent: Vec<String>,
-}
+type Caves = HashMap<String, Vec<String>>;
+type CanVisitFn = fn (&String, &Vec<String>) -> bool;
 
 #[allow(dead_code)]
-fn read_input() -> HashMap<String, Cave> {
-    let mut caves: HashMap<String, Cave> = HashMap::new();
+fn read_input() -> Caves {
+    let mut caves: Caves = HashMap::new();
     for connection in fs::read_to_string(FILENAME).expect("error reading").trim().lines() {
         let mut split = connection.split("-");
         let start = split.next().unwrap();
         let end = split.next().unwrap();
         match caves.get_mut(&start.to_string()) {
             Some(cave) => {
-                cave.adjacent.push(end.to_string());
+                cave.push(end.to_string());
             },
             None => {
-                caves.insert(start.to_string(), Cave { adjacent: vec![end.to_string()] });
+                caves.insert(start.to_string(), vec![end.to_string()]);
             }
         }
         match caves.get_mut(&end.to_string()) {
             Some(cave) => {
-                cave.adjacent.push(start.to_string());
+                cave.push(start.to_string());
             },
             None => {
-                caves.insert(end.to_string(), Cave { adjacent: vec![start.to_string()] });
+                caves.insert(end.to_string(), vec![start.to_string()]);
             }
         }
     }
@@ -41,41 +40,36 @@ fn read_input() -> HashMap<String, Cave> {
 #[allow(dead_code)]
 pub fn part1() -> usize {
     let caves = read_input();
-    let paths = generate_paths(&caves, can_visit_1);
-    paths.len()
+    count_paths(&caves, can_visit_1)
 }
 
 #[allow(dead_code)]
 pub fn part2() -> usize {
     let caves = read_input();
-    let paths = generate_paths(&caves, can_visit_2);
-    debug!(&paths);
-    paths.len()
+    count_paths(&caves, can_visit_2)
 }
 
-fn generate_paths(caves: &HashMap<String, Cave>, can_visit: fn(&String, &Vec<String>) -> bool) -> Vec<Vec<String>> {
+fn count_paths(caves: &Caves, can_visit: CanVisitFn) -> usize {
     let mut paths: Vec<Vec<String>> = Vec::new();
     paths.push(vec!["start".to_string()]);
-    let mut prev_len = 0;
-    while paths.len() != prev_len {
-        prev_len = paths.len();
-        let mut next_paths: Vec<Vec<String>> = Vec::new();
-        for path in paths {
-            if path.last().unwrap().to_string() == "end" {
-                next_paths.push(path.to_vec());
+    let mut count = 0;
+    while !paths.is_empty() {
+        let current = paths.pop().unwrap();
+        for path in compute_next(caves, can_visit, &current) {
+            if path.last().unwrap() == "end" {
+                count += 1;
             } else {
-                next_paths.extend(compute_next(caves, can_visit, &path));
+                paths.push(path);
             }
         }
-        paths = next_paths;
     }
-    paths
+    count
 }
 
-fn compute_next(caves: &HashMap<String, Cave>, can_visit: fn(&String, &Vec<String>) -> bool, visited: &Vec<String>) -> Vec<Vec<String>> {
+fn compute_next(caves: &Caves, can_visit: CanVisitFn, visited: &Vec<String>) -> Vec<Vec<String>> {
     let last = visited.last().unwrap();
     let mut next_paths = Vec::new();
-    for adjacent in caves.get(last).unwrap().adjacent.iter() {
+    for adjacent in caves.get(last).unwrap().iter() {
         if !can_visit(adjacent, visited) {
             continue;
         }
