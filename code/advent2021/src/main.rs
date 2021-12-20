@@ -19,9 +19,11 @@ mod day15;
 mod day16;
 mod day17;
 mod day18;
+mod day19;
+mod day20;
 
 #[allow(unused_imports)]
-use day18::{part1,part2};
+use day20::{part1,part2};
 
 fn main() {
     println!("\nExecution Starting\n");
