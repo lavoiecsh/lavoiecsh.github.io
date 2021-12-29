@@ -24,10 +24,10 @@ mod day20;
 mod day21;
 mod day22;
 mod day23;
-// mod day24;
+mod day24;
 
 #[allow(unused_imports)]
-use day23::{part1,part2};
+use day24::{part1,part2};
 
 fn main() {
     println!("\nExecution Starting\n");
