@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Introduction
-ref: introduction
 date: 2018-09-20 9:00:00 -0400
 categories: [Update]
 tags: []

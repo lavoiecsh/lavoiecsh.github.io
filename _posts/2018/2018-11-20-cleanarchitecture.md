@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Book Review: Clean Architecture"
-ref: cleanarchitecture
 date: 2018-11-20 9:00:00 -0400
 categories: [Review]
 tags: []

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Book Review: Growing Object-Oriented Software, Guided by Tests"
-ref: growing_object_oriented_software_guided_by_tests
 date: 2019-04-16
 categories: [Review]
 tags: []

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Jekyll, pagination, categorizing and Javascript"
-ref: jekyll-javascript
 date: 2019-03-03
 categories: [Update]
 tags: []

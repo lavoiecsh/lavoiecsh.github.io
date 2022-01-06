@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "New stuff in C#8: Nullable Reference Types"
-ref: cs8_nullable_reference_types
 date: 2019-03-19
 categories: [Technologies]
 tags: [C#]

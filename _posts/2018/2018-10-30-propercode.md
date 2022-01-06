@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Proper Code"
-ref: propercode
 date: 2018-10-30 9:00:00 -0400
 categories: [Update]
 tags: []

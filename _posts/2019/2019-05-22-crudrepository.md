@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "CrudRepository is an anti-pattern"
-ref: crudrepository
 date: 2019-05-22
 categories: [Practices]
 tags: []

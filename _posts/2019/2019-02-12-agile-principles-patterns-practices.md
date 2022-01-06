@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Book Review: Agile Principles, Patterns, and Practices in C#"
-ref: agile_principles_practices_patterns
 date: 2019-02-12
 categories: [Review]
 tags: []
