@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Layout Update"
-lang: en
 ref: layout_update
 date: 2019-01-17 17:57:00 -0400
 categories: [Update]

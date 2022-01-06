@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Book Review: Gang of Four"
-lang: en
 ref: gangoffour
 date: 2018-11-06 9:00:00 -0400
 categories: [Review]

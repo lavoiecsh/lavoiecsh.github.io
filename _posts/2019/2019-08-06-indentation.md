@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Indentation"
-lang: en
 ref: indentation
 date: 2019-08-06
 categories: [Practices]

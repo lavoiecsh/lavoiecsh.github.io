@@ -36,7 +36,7 @@
         <nav class="site-nav">
             <p class="pages">Pages</p>
             <ul class="pages">
-                {% assign pages = site.pages | where: "lang", page.lang | where_exp: "p", "p.ref != 'index'" %}
+                {% assign pages = site.pages | where_exp: "p", "p.ref != 'index'" %}
                 {% for p in pages %}
                 <li>
                     <a class="page-link" href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a>
@@ -45,7 +45,7 @@
             </ul>
             <p class="pages">Posts by category</p>
             <ul class="pages">
-                {% assign categories = site.posts | where: "lang", page.lang | group_by: "categories" | sort: "name" %}
+                {% assign categories = site.posts | group_by: "categories" | sort: "name" %}
                 {% for category in categories %}
                 {% assign name = category.name | strip | remove: '"' | remove: "[" | remove: "]" %}
                 <li>
@@ -56,17 +56,6 @@
                 {% endfor %}
             </ul>
         </nav>
-    </div>
-    <div class="other-languages">
-        {% assign page_other_lang = site.posts | concat: site.pages | where: "ref", page.ref | where_exp: "p",
-        "p.lang != page.lang" | first %}
-        {% if page_other_lang %}
-        {% if page.lang == "en" %}
-        <a href="{{ page_other_lang.url | relative_url }}">Lisez cette page en français</a>
-        {% else %}
-        <a href="{{ page_other_lang.url | relative_url }}">Read this page in english</a>
-        {% endif %}
-        {% endif %}
     </div>
     <div class="content">
         <div class="content-max">

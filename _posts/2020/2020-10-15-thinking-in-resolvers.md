@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Thinking in resolvers"
-lang: en
 ref: thinking-in-resolvers
 date: 2020-10-15
 categories: [Technologies]

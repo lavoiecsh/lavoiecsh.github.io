@@ -9,7 +9,12 @@ layout: default
                 {{ page.date | date: "%Y/%m/%d" }}
             </time>
             •
-            {{ page.categories }}
+            <div class="categories">
+              {{ page.categories }}
+            </div>
+            <div class="tags">
+              {{ page.tags }}
+            </div>
             {% if page.author %}
             •
             <span itemprop="author" itemscope itemtype="http://schema.org/Person">
