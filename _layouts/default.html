@@ -5,11 +5,7 @@
 {% assign description = site.description %}
 {% endif %}
 
-{% if page.lang == "en" %}
 {% assign main_url = "/index.html" | relative_url %}
-{% else %}
-{% assign main_url = "/index.fr.html" | relative_url %}
-{% endif %}
 <html lang="{{page.lang}}">
 <head>
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
