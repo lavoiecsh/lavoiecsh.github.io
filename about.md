@@ -6,4 +6,6 @@ My name is Sébastien Lavoie-Courchesne. I'm the software architect for the Cata
 
 I like architecture, programming, clean code and teaching stuff to other people, hence this blog.
 
-This is also a place for me to put down updates on some code challenges I partake in once in a while.
+I delve into best practices, litterature reviews and technology opinions.
+
+This is also a place for me to put down some updates on myself as well as some code challenges I partake in once in a while.

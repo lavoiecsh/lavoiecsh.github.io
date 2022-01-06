@@ -32,8 +32,7 @@
         <nav class="site-nav">
             <p class="pages">Pages</p>
             <ul class="pages">
-                {% assign pages = site.pages | where_exp: "p", "p.path != 'index.html'" %}
-                {% for p in pages %}
+                {% for p in site.pages %}
                 <li>
                     <a class="page-link" href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a>
                 </li>
