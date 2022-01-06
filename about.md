@@ -1,7 +1,6 @@
 ---
 layout: page
 title: About
-lang: en
 ref: about
 ---
 My name is Sébastien Lavoie-Courchesne. I'm the software architect for the Catalog domain group at AppDirect. I've been working there since May 2019, first as a developer before becoming a software architect. I work heavily with GraphQL, Kafka, NodeJS and TypeScript.

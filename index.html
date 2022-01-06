@@ -1,10 +1,9 @@
 ---
 layout: page
 title: Posts
-lang: en
 ref: index
 ---
-{% assign posts = site.posts | where: "lang", page.lang %}
+{% assign posts = site.posts %}
 <ul class="post-list">
     {% for post in posts %}
     <li data-category="{{ post.categories }}">
