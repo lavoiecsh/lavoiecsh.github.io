@@ -6,7 +6,7 @@
 {% endif %}
 
 {% assign main_url = "/index.html" | relative_url %}
-<html lang="{{page.lang}}">
+<html lang="en">
 <head>
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta charset="utf-8">
@@ -81,11 +81,7 @@
         </ul>
     </div>
     <div class="rss-feed">
-        {% if page.lang == "en" %}
         <a href="/feed.xml">Subscribe via RSS</a>
-        {% else %}
-        <a href="/feed.xml">Souscrire via RSS</a>
-        {% endif %}
     </div>
 </div>
 </body>
