@@ -2,23 +2,39 @@
 layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-    <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-        <p class="post-meta">
-            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-                {{ page.date | date: "%Y/%m/%d" }}
-            </time>
-            •
-            {{ page.categories }}
-            {% if page.author %}
-            •
-            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <span itemprop="name">{{ page.author }}</span>
-            </span>
-            {% endif %}
-        </p>
-    </header>
-    <div class="post-content" itemprop="articleBody">
-        {{ content }}
-    </div>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+    <p class="post-meta">
+    <p class="time-categories">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date_to_long_string: "ordinal" }}
+      </time>
+      •
+      <span class="categories">
+        {{ page.categories }}
+      </span>
+    </p>
+    <p class="tags">
+      tags: {{ page.tags | sort | join: " " }}
+    </p>
+    <p class="reading-length">
+      <span class="reading-length-words">
+        {{ page.content | number_of_words }} words
+      </span>
+      •
+      <span class="reading-length-time">
+        {{ page.content | number_of_words | divided_by: 200.0 | ceil }} minute read
+      </span>
+    </p>
+    {% if page.author %}
+    •
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <span itemprop="name">{{ page.author }}</span>
+    </span>
+    {% endif %}
+    </p>
+  </header>
+  <div class="post-content" itemprop="articleBody">
+    {{ content }}
+  </div>
 </article>

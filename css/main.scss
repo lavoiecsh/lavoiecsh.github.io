@@ -92,12 +92,6 @@ a {
     }
 }
 
-.other-languages {
-    grid-area: languages;
-    font-size: 20px;
-    padding: 8px;
-}
-
 .content {
     grid-area: content;
     font-size: 20px;
@@ -148,12 +142,12 @@ a {
     height: 100%;
     display: grid;
     grid-template-columns: 384px auto;
-    grid-template-areas: 'title content' 'nav content' 'languages content' 'rss content' 'contact content' '. content';
+    grid-template-areas: 'title content' 'nav content' 'rss content' 'contact content' '. content';
 }
 
 @include small-screen() {
     .grid-container {
         grid-template-columns: auto auto;
-        grid-template-areas: 'title' 'languages' 'content' 'nav' 'rss' 'contact';
+        grid-template-areas: 'title' 'content' 'nav' 'rss' 'contact';
     }
 }
