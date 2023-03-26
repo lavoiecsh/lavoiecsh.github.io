@@ -1,0 +1,23 @@
+{
+  "permalink": "/2018/09/20/indroduction",
+  "source": "@site/blog/2018/09-20-indroduction.md",
+  "title": "Introduction",
+  "description": "Welcome to my blog.",
+  "date": "2018-09-20T00:00:00.000Z",
+  "formattedDate": "September 20, 2018",
+  "tags": [
+    {
+      "label": "update",
+      "permalink": "/tags/update"
+    }
+  ],
+  "readingTime": 0.395,
+  "hasTruncateMarker": false,
+  "authors": [],
+  "frontMatter": {
+    "title": "Introduction",
+    "tags": [
+      "update"
+    ]
+  }
+}

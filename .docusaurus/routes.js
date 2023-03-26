@@ -38,63 +38,28 @@ export default [
     exact: true
   },
   {
-    path: '/blog',
-    component: ComponentCreator('/blog', '322'),
+    path: '/2018/09/20/indroduction',
+    component: ComponentCreator('/2018/09/20/indroduction', 'e44'),
     exact: true
   },
   {
-    path: '/blog/archive',
-    component: ComponentCreator('/blog/archive', 'e99'),
-    exact: true
-  },
-  {
-    path: '/blog/first-blog-post',
-    component: ComponentCreator('/blog/first-blog-post', 'db4'),
-    exact: true
-  },
-  {
-    path: '/blog/long-blog-post',
-    component: ComponentCreator('/blog/long-blog-post', 'dba'),
-    exact: true
-  },
-  {
-    path: '/blog/mdx-blog-post',
-    component: ComponentCreator('/blog/mdx-blog-post', '2fe'),
-    exact: true
-  },
-  {
-    path: '/blog/tags',
-    component: ComponentCreator('/blog/tags', '904'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/docusaurus',
-    component: ComponentCreator('/blog/tags/docusaurus', 'ca3'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/facebook',
-    component: ComponentCreator('/blog/tags/facebook', '83a'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/hello',
-    component: ComponentCreator('/blog/tags/hello', 'd54'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/hola',
-    component: ComponentCreator('/blog/tags/hola', 'c02'),
-    exact: true
-  },
-  {
-    path: '/blog/welcome',
-    component: ComponentCreator('/blog/welcome', 'b6c'),
+    path: '/archive',
+    component: ComponentCreator('/archive', '8b3'),
     exact: true
   },
   {
     path: '/markdown-page',
     component: ComponentCreator('/markdown-page', 'f0a'),
+    exact: true
+  },
+  {
+    path: '/tags',
+    component: ComponentCreator('/tags', 'cc3'),
+    exact: true
+  },
+  {
+    path: '/tags/update',
+    component: ComponentCreator('/tags/update', 'a34'),
     exact: true
   },
   {
@@ -171,7 +136,7 @@ export default [
   },
   {
     path: '/',
-    component: ComponentCreator('/', 'ed6'),
+    component: ComponentCreator('/', '07f'),
     exact: true
   },
   {

@@ -3,8 +3,7 @@
     {
       "id": "/2018/09/20/indroduction",
       "metadata": {
-        "permalink": "/blog/2018/09/20/indroduction",
-        "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2018/09-20-indroduction.md",
+        "permalink": "/2018/09/20/indroduction",
         "source": "@site/blog/2018/09-20-indroduction.md",
         "title": "Introduction",
         "description": "Welcome to my blog.",
@@ -13,7 +12,7 @@
         "tags": [
           {
             "label": "update",
-            "permalink": "/blog/tags/update"
+            "permalink": "/tags/update"
           }
         ],
         "readingTime": 0.395,

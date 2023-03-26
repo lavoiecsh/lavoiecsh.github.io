@@ -31,7 +31,7 @@ export default {
         },
         "blog": {
           "showReadingTime": true,
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
+          "routeBasePath": "/"
         },
         "theme": {
           "customCss": "/Users/sebastien.lavoie-cou/code/lavoiecsh/lavoiecsh.github.io/src/css/custom.css"
