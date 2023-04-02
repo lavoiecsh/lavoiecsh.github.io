@@ -1,6 +1,6 @@
 ---
 title: Introduction
-tags: [update]
+tags: [Blog,Update]
 ---
 
 Welcome to my blog.
