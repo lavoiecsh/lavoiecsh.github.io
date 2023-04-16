@@ -6,6 +6,8 @@ Today I'll be doing a review of the book "Growing Object-Oriented Software, Guid
 
 Most people are aware of the TDD cycle of Fail - Pass - Refactor, this book uses this concept at a bigger level by doing acceptance tests with this cycle, which drives smaller cycles for integration and unit tests. It has a very good example solution which helps to understand how everything fits together on a larger scale.
 
+<!-- truncate -->
+
 ### Who is this book for?
 People who already have a basic understanding of Test Driven Development might find a new possibility in writing acceptance tests that drive all the tests and code. The book also briefly explains the basic concepts of Test Driven Development, so people who aren't used to TDD can pick it up too.
 

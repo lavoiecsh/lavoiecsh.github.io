@@ -6,6 +6,8 @@ This is the first book I have read since university. It was proposed to me not l
 
 I'm going to talk about the C# version of the book (Agile Principles, Patterns, and Practices in C#), but it also applies to the Java version (Agile Software Development: Principles, Patterns, and Practices). Both books were written by Robert C. Martin (Uncle Bob).
 
+<!-- truncate -->
+
 ### Who is this book for?
 This book is for every new developer especially those wanting to work with object oriented languages, as long as they have the fundamentals of program flow (functions, loops, conditions, etc). Most of the concepts are general and will be used in any programming paradigm, but the examples use an OO language (either C# or Java). 
 

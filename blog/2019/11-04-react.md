@@ -4,6 +4,8 @@ tags: [Practices,Javascript]
 ---
 After working a little with the React-Redux-Saga ecosystem, and working with others that were still new to it, I came to realize some parts of the frameworks can be a little confusing so I decided to write this post to explain how everything works together. This article isn't meant to explain everything, but give a brief overview of the different sections of the ecosystem and how they interact with each other in case you need to work on an existing project or need to think about which technology to use for new project.
 
+<!-- truncate -->
+
 ## React
 React is essentially a framework to easily divide your front-end application in different components which interact together to form your application. This helps separate concerns for the different parts of your application and reuse some of the components you create.
 

@@ -4,6 +4,8 @@ tags: [Practices]
 ---
 CrudRepositories may seem like a nice way to boost productivity, but I think they lead to bad design and I'll explain why.
 
+<!-- truncate -->
+
 ### First off, what is a CrudRepository?
 In Domain Driven Design, a repository is an object used to access persisted information, usually in a database. It provides methods for accessing certain objects and modifying them. CRUD is the smallest set of methods that can be used to work with your data. It consists of four explicitly named methods: Create, Read, Update, Delete. A CrudRepository is a class implementing these four methods. These are usually generic, and sometimes even automatically generated (see Spring). They usually look something like this:
 ```java

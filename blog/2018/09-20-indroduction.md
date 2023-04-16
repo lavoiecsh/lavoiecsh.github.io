@@ -2,8 +2,9 @@
 title: Introduction
 tags: [Blog,Update]
 ---
-
 Welcome to my blog.
+
+<!-- truncate -->
 
 I'm starting this blog as an opportunity to talk about software development. My objective here is to provide my opinion on different subjects pertaining to software development, and maybe teach you new stuff.
 

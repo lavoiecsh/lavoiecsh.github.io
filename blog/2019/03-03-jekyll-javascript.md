@@ -4,6 +4,8 @@ tags: [Blog,Update]
 ---
 As some of you may know Jekyll is an application to build static websites. It's used by GitHub-Pages (where this blog is residing). One of the disadvantages of having a static website is that every page must be created before publishing it. This means that you cannot do filtering based on query parameters and such, and all the sub-pages for pagination must be generated before hand. Jekyll does allow extensions in Ruby to generate the pages, one of which is a paginator, but for some reason I've had trouble making it work on GitHub-Pages. The paginator also doesn't work with multiple languages like this blog.
 
+<!-- truncate -->
+
 After trying all this for a while, I decided to go the old route and add a bit of Javascript to my pages to add pagination and categorizing. I used ES6 Javascript with no additional libraries (like JQuery).
 
 ### Categorizing

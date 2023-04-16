@@ -6,6 +6,8 @@ tags: [Technologies,GraphQL]
 
 Everything in GraphQL revolves around resolvers. It's important to understand this to better develop application exposing GraphQL APIs.
 
+<!-- truncate -->
+
 ## Table of Contents
 1. [Resolver Anatomy](#resolver-anatomy)
 1. [Field within a type](#field-within-a-type)

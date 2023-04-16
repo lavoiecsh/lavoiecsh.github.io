@@ -6,6 +6,8 @@ Over the years, many styles of indentation have surfaced. From K&R to Allman, Wh
 
 I will not advocate for a single style, but will give you guidelines on how to choose one that will last long and reduce the headaches that could be created with refactorings and such.
 
+<!-- truncate -->
+
 ### Why tabs or spaces?
 This has been a long debate for which both sides have emitted a number of arguments. Arguments for using tabs often include:
 - reduced disk space: since you're using 1 tab instead of multiple spaces, in the long run it can save disk space. This was a big problem in the early days of programming, but with the amount of disk space and memory we have today, it's pretty much been voided since then.

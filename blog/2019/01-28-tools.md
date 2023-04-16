@@ -4,6 +4,8 @@ tags: [Practices]
 ---
 There are a lot of tools to work with code now and it's getting harder and harder to choose between the different editors, IDEs, compilers, linkers, build engines, version control systems and such. How do you choose between all of them? I'll focus mainly on editors and IDEs for the moment might come back for other tools later on. My point here is not to tell you which editor or IDE to use or not, but help you choose the correct one for you.
 
+<!-- truncate -->
+
 ### Solo or Team Work?
 There are concerns when working in a team like having a unified code style that may make you tilt in a certain direction. Most editors and IDEs nowadays come with very complete code style engines to help you format the code the way you want it with as little effort as possible. The important part is that everybody in the team works with the same code style. This helps to reduce "useless" modifications in commits (where only the spacing, indentation or line wrapping changed) which will make it easier to review code. IDEs like the JetBrains suite or Visual Studio with ReSharper offer this out of the box and you can version the code style options so that everybody uses the same settings.  Most of the IDEs will only work if you use the same one (because their settings are saved with a custom format), but some IDEs will read a .editorconfig file containing the code style settings you need.
 

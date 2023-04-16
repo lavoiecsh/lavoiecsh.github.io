@@ -4,6 +4,8 @@ tags: [Practices]
 ---
 Just like "Manager" or "Data", I think "Service" is another word we should ban from our code. When you read Domain Driven Design theory, services are there to help you correctly separate concerns and contain some domain logic while handling other domain objects. Although services are an integral part of DDD, it's not a design pattern so you shouldn't have a class name containing "Service".
 
+<!-- truncate -->
+
 ### It leads to unmaintainable code
 We have an expression in french to describe something that contains everything: "fourre-tout", literally fill-everything. This describes exactly what happens when you have a class whose name contains "Service".
 

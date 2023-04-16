@@ -4,6 +4,8 @@ tags: [Technologies,C#]
 ---
 Today I'm starting a small series on new features coming to C#8.0, starting with Nullable Reference Types.
 
+<!-- truncate -->
+
 C# has a type system, like many other languages, which allows you to assign null to any non-primitive object (pretty much everything except integers, floating point numbers and characters). This means that whenever you receive a reference type through a function parameter or keep one as an instance variable, you need to make sure that it's not null before using it (or deal with the NullReferenceException). This also meant that you couldn't have nullable reference types (ex: `string?` or `Person?`).
 
 One of the new features coming is a compilation flag you can add to your project to make reference types require non-null values, while also allowing to create nullable reference types. This explicits the fact that your variable or parameter may be null and it's ok because you handle it.

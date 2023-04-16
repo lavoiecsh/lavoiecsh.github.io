@@ -4,6 +4,8 @@ tags: [Update]
 ---
 I recently decided to update my website and used this opportunity to learn a new (though old) technology: CSS Grid.
 
+<!-- truncate -->
+
 I completely scrapped the old css (including bootstrap) and rewrote everything myself. I was surprised at how much I could do with so little SCSS since I've been used to using bootstrap and other such libraries that add thousands of lines of code. My current SCSS file is under 150 lines and doesn't include any other css files.
 
 Placing things in the page with CSS Grid is an absolute joy compared to trying to work for different screen sizes using bootstrap and I now would always suggest CSS Grid when starting a new project, especially if it's aimed at different screen sizes.

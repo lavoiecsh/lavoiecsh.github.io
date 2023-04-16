@@ -6,6 +6,8 @@ I'm starting this book review series with the infamous book about design pattern
 
 This book has been considered by many as a reference that everybody should read (and I count myself in these as well). I do think the book does not need to be read in it's entirety for the reader to use it's concepts.
 
+<!-- truncate -->
+
 ### Who is this book for?
 Object-oriented software developers. This book was written to help solve problems generally found when developing OO software (mostly in Java, C++, C#, Ruby, etc.). Most of the patterns are either already implemented or not necessary in functional and/or procedural languages.
 

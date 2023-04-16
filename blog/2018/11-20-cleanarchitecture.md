@@ -4,6 +4,8 @@ tags: [Review]
 ---
 Next up in the book review series: *Clean Architecture: A Craftsman's Guide to Software Structure and Design* by Robert Martin. Although I've loved a lot of the other books by Uncle Bob, I have to admit this one disappointed me and I'll explain why in this book review.
 
+<!-- truncate -->
+
 The book contains 3 main sections:
 1. A history of software development (parts I and II of the book)
 2. Principles for software development (parts III and IV of the book)
