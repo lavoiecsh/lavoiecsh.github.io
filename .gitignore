@@ -3,6 +3,7 @@ node_modules
 
 # Docusaurus
 .docusaurus
+build
 
 # IDE
 .idea
