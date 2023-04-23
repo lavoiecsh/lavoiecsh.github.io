@@ -4,6 +4,8 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const copyright = `Copyright © ${new Date().getFullYear()} Sebastien Lavoie-Courchesne.`;
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'Proper Code',
@@ -22,7 +24,7 @@ const config = {
     projectName: 'lavoiecsh.github.io', // Usually your repo name.
 
     onBrokenLinks: 'throw',
-    onBrokenMarkdownLinks: 'warn',
+    onBrokenMarkdownLinks: 'throw',
 
     // Even if you don't use internalization, you can use this field to set useful
     // metadata like html lang. For example, if your site is Chinese, you may want
@@ -43,6 +45,19 @@ const config = {
                     routeBasePath: '/',
                     blogTitle: 'Proper Code',
                     blogDescription: 'A blog about proper coding',
+                    postsPerPage: 5,
+                    feedOptions: {
+                        type: 'all',
+                        copyright,
+                        title: 'Proper Code',
+                        description: 'A blog about proper coding',
+                        language: 'en',
+                        createFeedItems: ({ blogPosts, defaultCreateFeedItems, ...rest }) =>
+                            defaultCreateFeedItems({
+                                blogPosts: blogPosts.slice(0, 5),
+                                ...rest,
+                            }),
+                    },
                 },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
@@ -81,10 +96,10 @@ const config = {
                     {
                         title: 'Docs',
                         items: [
-                            {
-                                label: 'Resume',
-                                href: 'a',
-                            },
+                            // {
+                            //     label: 'Resume',
+                            //     href: '',
+                            // },
                         ],
                     },
                     {
@@ -100,8 +115,16 @@ const config = {
                             },
                         ],
                     },
+                    {
+                        title: 'Feeds',
+                        items: [
+                            { label: 'RSS', href: '/rss.xml' },
+                            { label: 'Atom', href: '/atom.xml' },
+                            { label: 'JSON', href: '/feed.json' },
+                        ],
+                    },
                 ],
-                copyright: `Copyright © ${new Date().getFullYear()} Sebastien Lavoie-Courchesne. Built with Docusaurus.`,
+                copyright,
             },
             prism: {
                 theme: lightCodeTheme,
