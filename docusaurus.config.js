@@ -39,7 +39,9 @@ const config = {
             'classic',
             /** @type {import('@docusaurus/preset-classic').Options} */
             ({
-                docs: false,
+                docs: {
+                    routeBasePath: '/docs',
+                },
                 blog: {
                     showReadingTime: true,
                     routeBasePath: '/',
@@ -96,10 +98,10 @@ const config = {
                     {
                         title: 'Docs',
                         items: [
-                            // {
-                            //     label: 'Resume',
-                            //     href: '',
-                            // },
+                            {
+                                label: 'About me',
+                                to: 'docs/about-me',
+                            },
                         ],
                     },
                     {
