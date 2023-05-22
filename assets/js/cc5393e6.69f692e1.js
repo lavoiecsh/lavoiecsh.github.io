@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkproper_code=self.webpackChunkproper_code||[]).push([[8379],{5469:e=>{e.exports=JSON.parse('{"label":"Challenges","permalink":"/tags/challenges","allTagsPath":"/tags","count":30}')}}]);

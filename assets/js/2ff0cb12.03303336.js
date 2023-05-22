@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkproper_code=self.webpackChunkproper_code||[]).push([[8169],{7696:e=>{e.exports=JSON.parse('{"permalink":"/tags/practices/page/2","page":2,"postsPerPage":5,"totalPages":2,"totalCount":6,"previousPage":"/tags/practices","blogDescription":"A blog about proper coding","blogTitle":"Proper Code"}')}}]);
