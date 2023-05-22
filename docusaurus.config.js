@@ -74,9 +74,9 @@ const config = {
             // Replace with your project's social card
             // image: 'img/logo.svg',
             navbar: {
-                title: 'Proper code',
+                title: 'Proper Code',
                 logo: {
-                    alt: 'Proper code',
+                    alt: 'Proper Code',
                     src: 'img/logo.svg',
                 },
                 items: [
@@ -87,7 +87,7 @@ const config = {
                     },
                     {
                         href: 'https://github.com/lavoiecsh/code',
-                        label: 'Code',
+                        label: 'Code Samples',
                         position: 'left',
                     },
                 ],
