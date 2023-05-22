@@ -22,6 +22,9 @@ const config = {
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'lavoiecsh', // Usually your GitHub org/user name.
     projectName: 'lavoiecsh.github.io', // Usually your repo name.
+    trailingSlash: false,
+    deploymentBranch: 'gh-pages',
+    githubHost: 'lavoiecsh.github.com',
 
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'throw',
